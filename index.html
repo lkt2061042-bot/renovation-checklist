@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>裝修工程配搭清單（車仔麵點餐風格）</title>
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --primary-hover: #1d4ed8;
+            --bg-color: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #1e293b;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --radius: 8px;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.5;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--card-bg);
+            border-radius: var(--radius);
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            overflow: hidden;
+        }
+
+        header {
+            background: linear-gradient(135deg, #1e293b, #0f172a);
+            color: white;
+            padding: 24px 30px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+        }
+
+        header p {
+            color: #94a3b8;
+            font-size: 0.875rem;
+        }
+
+        .form-content {
+            padding: 30px;
+        }
+
+        /* 時間選擇區塊 */
+        .time-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            background: #f1f5f9;
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 30px;
+        }
+
+        @media (max-width: 600px) {
+            .time-section {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.875rem;
+            font-weight: 600;
+            color: var(--text-main);
+            margin-bottom: 8px;
+        }
+
+        .form-group select {
+            padding: 10px 12px;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            background-color: white;
+            font-size: 0.95rem;
+            color: var(--text-main);
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        .form-group select:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        /* 項目分類區塊 */
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--text-main);
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-bottom: 16px;
+            margin-top: 32px;
+        }
+
+        .section-title:first-of-type {
+            margin-top: 0;
+        }
+
+        .options-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 12px;
+            margin-bottom: 16px;
+        }
+
+        /* 車仔麵式點餐卡片選框 */
+        .option-card {
+            display: flex;
+            align-items: center;
+            background: white;
+            border: 1px solid var(--border-color);
+            border-radius: 6px;
+            padding: 12px 16px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+        }
+
+        .option-card input[type="checkbox"] {
+            accent-color: var(--primary-color);
+            width: 18px;
+            height: 18px;
+            margin-right: 12px;
+            cursor: pointer;
+        }
+
+        .option-card span {
+            font-size: 0.95rem;
+            color: var(--text-main);
+            user-select: none;
+            flex-grow: 1;
+        }
+
+        /* 自定義按鈕列 */
+        .custom-action-row {
+            display: flex;
+            align-items: center;
+            margin-top: 8px;
+            gap: 10px;
+        }
+
+        .btn-add {
+            background-color: transparent;
+            color: var(--primary-color);
+            border: 1px dashed var(--primary-color);
+            padding: 6px 14px;
+            font-size: 0.875rem;
+            font-weight: 500;
+            border-radius: 6px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            transition: background-color 0.2s, color 0.2s;
+        }
+
+        .btn-add:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        /* 底部提交按鈕 */
+        .footer-action {
+            margin-top: 40px;
+            text-align: right;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 12px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-hover);
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <header>
+        <h1>裝修工程需求配置單</h1>
+        <p>請依照您的需求勾選對應項目，系統支援自定義擴充</p>
+    </header>
+
+    <div class="form-content">
+        <form id="renovationForm">
+            <!-- 時間選擇 -->
+            <div class="time-section">
+                <div class="form-group">
+                    <label for="startTime">開始時間：</label>
+                    <select id="startTime" name="startTime">
+                        <option value="">請選擇開始時間</option>
+                        <option value="2026-Q1">2026 年 第一季</option>
+                        <option value="2026-Q2">2026 年 第二季</option>
+                        <option value="2026-Q3">2026 年 第三季</option>
+                        <option value="2026-Q4">2026 年 第四季</option>
+                        <option value="immed">即時開工</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="endTime">完工時間：</label>
+                    <select id="endTime" name="endTime">
+                        <option value="">請選擇預計完工時間</option>
+                        <option value="1m">1 個月內</option>
+                        <option value="2m">2 個月內</option>
+                        <option value="3m">3 個月內</option>
+                        <option value="6m">半年內</option>
+                        <option value="flexible">彈性配合</option>
+                    </select>
+                </div>
+            </div>
+
+            <!-- 工作範圍 -->
+            <div class="section-title">工作範圍</div>
+            <div class="options-grid" id="scope-container">
+                <label class="option-card"><input type="checkbox" name="scope" value="增加一個房間"><span>增加一個房間</span></label>
+                <label class="option-card"><input type="checkbox" name="scope" value="全屋重做"><span>全屋重做</span></label>
+                <label class="option-card"><input type="checkbox" name="scope" value="電制面保留部分新做"><span>電制面保留部分新做</span></label>
+                <label class="option-card"><input type="checkbox" name="scope" value="只做部分傢俬"><span>只做部分傢俬</span></label>
+                <label class="option-card"><input type="checkbox" name="scope" value="鋁窗更換"><span>鋁窗更換</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('scope-container', 'scope')">＋ 自定義工作範圍</button>
+            </div>
+
+            <!-- 泥水 -->
+            <div class="section-title">泥水工程</div>
+            <div class="options-grid" id="masonry-container">
+                <label class="option-card"><input type="checkbox" name="masonry" value="地磚鋪設"><span>地磚鋪設</span></label>
+                <label class="option-card"><input type="checkbox" name="masonry" value="牆磚鋪設"><span>牆磚鋪設</span></label>
+                <label class="option-card"><input type="checkbox" name="masonry" value="批盪及防水工程"><span>批盪及防水工程</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('masonry-container', 'masonry')">＋ 自定義泥水項目</button>
+            </div>
+
+            <!-- 水電 -->
+            <div class="section-title">水電工程</div>
+            <div class="options-grid" id="mep-container">
+                <label class="option-card"><input type="checkbox" name="mep" value="暗喉及電線重鋪"><span>暗喉及電線重鋪</span></label>
+                <label class="option-card"><input type="checkbox" name="mep" value="冷咸淡水喉更換"><span>冷咸淡水喉更換</span></label>
+                <label class="option-card"><input type="checkbox" name="mep" value="燈具及開關安裝"><span>燈具及開關安裝</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('mep-container', 'mep')">＋ 自定義水電項目</button>
+            </div>
+
+            <!-- 油漆 -->
+            <div class="section-title">油漆工程</div>
+            <div class="options-grid" id="painting-container">
+                <label class="option-card"><input type="checkbox" name="painting" value="全屋牆身剷底批灰"><span>全屋牆身剷底批灰</span></label>
+                <label class="option-card"><input type="checkbox" name="painting" value="乳膠漆塗刷"><span>乳膠漆塗刷</span></label>
+                <label class="option-card"><input type="checkbox" name="painting" value="藝術漆特色牆"><span>藝術漆特色牆</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('painting-container', 'painting')">＋ 自定義油漆項目</button>
+            </div>
+
+            <!-- 傢俬 -->
+            <div class="section-title">傢俬工程</div>
+            <div class="options-grid" id="furniture-container">
+                <label class="option-card"><input type="checkbox" name="furniture" value="訂造組合櫃"><span>訂造組合櫃</span></label>
+                <label class="option-card"><input type="checkbox" name="furniture" value="入牆衣櫃"><span>入牆衣櫃</span></label>
+                <label class="option-card"><input type="checkbox" name="furniture" value="廚櫃及吊櫃"><span>廚櫃及吊櫃</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('furniture-container', 'furniture')">＋ 自定義傢俬項目</button>
+            </div>
+
+            <!-- 鋁窗 -->
+            <div class="section-title">鋁窗工程</div>
+            <div class="options-grid" id="window-container">
+                <label class="option-card"><input type="checkbox" name="window" value="全屋鋁窗更換"><span>全屋鋁窗更換</span></label>
+                <label class="option-card"><input type="checkbox" name="window" value="窗台防水及執修"><span>窗台防水及執修</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('window-container', 'window')">＋ 自定義鋁窗項目</button>
+            </div>
+
+            <!-- 雜項 -->
+            <div class="section-title">雜項工程</div>
+            <div class="options-grid" id="misc-container">
+                <label class="option-card"><input type="checkbox" name="misc" value="清場及泥頭清理"><span>清場及泥頭清理</span></label>
+                <label class="option-card"><input type="checkbox" name="misc" value="裝修保險辦理"><span>裝修保險辦理</span></label>
+                <label class="option-card"><input type="checkbox" name="misc" value="完工專業清潔"><span>完工專業清潔</span></label>
+            </div>
+            <div class="custom-action-row">
+                <button type="button" class="btn-add" onclick="addCustomOption('misc-container', 'misc')">＋ 自定義雜項項目</button>
+            </div>
+
+            <!-- 提交按鈕 -->
+            <div class="footer-action">
+                <button type="submit" class="btn-submit">提交裝修清單</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<script>
+    // 自定義新增選項通用函數
+    function addCustomOption(containerId, inputName) {
+        const customValue = prompt("請輸入自定義項目名稱：");
+        if (customValue && customValue.trim() !== "") {
+            const container = document.getElementById(containerId);
+            const label = document.createElement('label');
+            label.className = 'option-card';
+            
+            const checkbox = document.createElement('input');
+            checkbox.type = 'checkbox';
+            checkbox.name = inputName;
+            checkbox.value = customValue.trim();
+            checkbox.checked = true; // 預設新增後直接勾選
+
+            const span = document.createElement('span');
+            span.textContent = customValue.trim();
+
+            label.appendChild(checkbox);
+            label.appendChild(span);
+            container.appendChild(label);
+        }
+    }
+
+    // 表單提交事件處理示範
+    document.getElementById('renovationForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+        const formData = new FormData(this);
+        const data = {};
+        
+        for (let [key, value] of formData.entries()) {
+            if (!data[key]) {
+                data[key] = [];
+            }
+            data[key].push(value);
+        }
+
+        console.log("提交的配置數據：", data);
+        alert("配置清單已成功提交！請檢查主控台 (Console) 輸出。");
+    });
+</script>
+
+</body>
+</html>
+
