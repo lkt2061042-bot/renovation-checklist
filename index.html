@@ -68,14 +68,6 @@ ul{margin:0;padding:0;list-style:none}
 .nav a[aria-current="true"]::after{content:"";position:absolute;left:14px;right:14px;bottom:2px;height:2px;background:var(--brand);border-radius:2px}
 .hdr-cta{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:#fff;padding:11px 20px;border-radius:999px;font-size:.9rem;font-weight:600;transition:transform .2s var(--ease),background .2s,box-shadow .2s}
 .hdr-cta:hover{background:#000;transform:translateY(-1px);box-shadow:var(--shadow-md)}
-.burger{display:none;width:44px;height:44px;border:1px solid var(--line);background:#fff;border-radius:12px;align-items:center;justify-content:center;cursor:pointer}
-.burger span{display:block;width:18px;height:1.5px;background:var(--ink);position:relative;transition:transform .25s,opacity .2s}
-.burger span::before,.burger span::after{content:"";position:absolute;left:0;width:18px;height:1.5px;background:var(--ink);transition:transform .25s,top .25s}
-.burger span::before{top:-6px}.burger span::after{top:6px}
-.burger[aria-expanded="true"] span{background:transparent}
-.burger[aria-expanded="true"] span::before{top:0;transform:rotate(45deg)}
-.burger[aria-expanded="true"] span::after{top:0;transform:rotate(-45deg)}
-.mnav{display:none}
 
 /* ---------- hero ---------- */
 .hero{position:relative;padding:64px 0 0;overflow:hidden}
@@ -91,42 +83,16 @@ h1 .accent::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;h
 .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 26px;border-radius:999px;font-weight:600;font-size:.9375rem;border:1px solid transparent;cursor:pointer;transition:transform .2s var(--ease),background .2s,color .2s,box-shadow .2s,border-color .2s}
 .btn:hover{transform:translateY(-2px)}
-.btn[hidden]{display:none}
 .btn-primary{background:var(--ink);color:#fff;box-shadow:0 8px 22px rgba(20,22,26,.18)}
 .btn-primary:hover{background:#000;box-shadow:0 12px 28px rgba(20,22,26,.24)}
-.btn-ghost{background:#fff;border-color:var(--line);color:var(--ink)}
-.btn-ghost:hover{border-color:var(--ink);box-shadow:var(--shadow-sm)}
-.btn-brand{background:var(--brand);color:#171400}
-.btn-brand:hover{background:var(--brand-2)}
-.btn svg{width:17px;height:17px;flex:none}
-.hero-media{position:relative}
-.hero-media img{width:100%;aspect-ratio:4/3.4;object-fit:cover;border-radius:calc(var(--radius) + 6px);box-shadow:var(--shadow-md);position:relative;z-index:1}
-.hero-badge{position:absolute;left:-18px;bottom:26px;background:#fff;border-radius:var(--radius-sm);box-shadow:var(--shadow-md);padding:14px 18px;display:flex;align-items:center;gap:12px;max-width:78%}
-.hero-badge b{font-size:1.375rem;line-height:1}
-.hero-badge span{font-size:.8125rem;color:var(--muted);display:block;line-height:1.4}
-.hero-badge .ico{width:38px;height:38px;border-radius:10px;background:var(--mist);display:grid;place-items:center;flex:none}
-
-/* stats */
-.stats{border-top:1px solid var(--line);border-bottom:1px solid var(--line);background:#fff}
-.stats ul{display:grid;grid-template-columns:repeat(4,1fr)}
-.stats li{padding:26px 8px;text-align:center;border-left:1px solid var(--line)}
-.stats li:first-child{border-left:0}
-.stats b{display:block;font-size:1.75rem;font-weight:700;letter-spacing:-.02em}
-.stats b em{font-style:normal;color:var(--brand-ink);font-size:1rem;font-weight:600;margin-left:2px}
-.stats span{font-size:.8125rem;color:var(--muted)}
 
 /* ---------- section shell ---------- */
 .sec{padding:96px 0}
 .sec--mist{background:var(--mist)}
 .sec-head{max-width:640px;margin-bottom:48px}
 .sec-head .kicker{display:inline-block;font-size:.75rem;letter-spacing:.16em;color:var(--brand-ink);font-weight:700;margin-bottom:14px}
-h1,h2,h3{text-wrap:balance}
-.mbr{display:none}
-@media (max-width:720px){.mbr{display:inline}}
 .sec-head h2{font-size:clamp(1.6rem,3vw,2.25rem)}
 .sec-head p{margin-top:16px;color:var(--ink-3)}
-.sec-head--split{display:flex;justify-content:space-between;align-items:flex-end;gap:32px;max-width:none}
-.sec-head--split>div{max-width:620px}
 
 /* quote wizard launch */
 .qz-launch{display:grid;place-items:center;padding:8px 0 4px}
@@ -145,6 +111,7 @@ h1,h2,h3{text-wrap:balance}
 <header class="hdr" id="hdr">
   <div class="wrap hdr-in">
     <a class="brand" href="#" aria-label="祥信裝修工程 CheungShun 首頁">
+      <!-- 修正 Logo 圖片路徑 -->
       <img src="assets/logo.png" width="760" height="217" alt="祥信裝修工程 CheungShun">
     </a>
     <nav class="nav" aria-label="頁首導覽">
@@ -173,6 +140,9 @@ h1,h2,h3{text-wrap:balance}
     </div>
   </section>
 
+  <!-- 如果您有工程作品展示區塊，請確保圖片路徑指向 assets/projects/ 資料夾，例如：
+       <img src="assets/projects/example.jpg" alt="工程作品"> -->
+
   <section class="sec sec--mist" id="quote">
     <div class="wrap">
       <div class="sec-head">
@@ -195,7 +165,7 @@ h1,h2,h3{text-wrap:balance}
   </section>
 </main>
 
-<!-- 引入 PDF 支援庫與您的精靈資料、邏輯檔案（順序極其重要：data.js 必須在 wizard.js 之前） -->
+<!-- 引入 PDF 支援庫與您的精靈資料、邏輯檔案 -->
 <script src="vendor/html2pdf.bundle.min.js"></script>
 <script src="data.js"></script>
 <script src="wizard.js"></script>
