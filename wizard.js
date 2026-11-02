@@ -397,7 +397,22 @@
         margin: [10, 10, 12, 10],
         filename: `祥信裝修需求摘要_${dateStr}.pdf`,
         image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", logging: false },
+        html2canvas: {
+          scale: 2,
+          useCORS: true,
+          backgroundColor: "#ffffff",
+          logging: false,
+          onclone: (clonedDoc) => {
+            const el = clonedDoc.querySelector(".pdf-doc");
+            if (el) {
+              el.style.position = "static";
+              el.style.left = "0";
+              el.style.top = "0";
+              el.style.zIndex = "auto";
+              el.style.pointerEvents = "auto";
+            }
+          },
+        },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         pagebreak: { mode: ["css", "legacy"], avoid: [".pdf-row", ".pdf-fact", ".pdf-group"] },
       }).from(doc).save();
