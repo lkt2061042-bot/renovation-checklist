@@ -111,7 +111,6 @@ h1 .accent::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;h
 <header class="hdr" id="hdr">
   <div class="wrap hdr-in">
     <a class="brand" href="#" aria-label="祥信裝修工程 CheungShun 首頁">
-      <!-- 修正 Logo 圖片路徑 -->
       <img src="assets/logo.png" width="760" height="217" alt="祥信裝修工程 CheungShun">
     </a>
     <nav class="nav" aria-label="頁首導覽">
@@ -140,8 +139,7 @@ h1 .accent::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;h
     </div>
   </section>
 
-  <!-- 如果您有工程作品展示區塊，請確保圖片路徑指向 assets/projects/ 資料夾，例如：
-       <img src="assets/projects/example.jpg" alt="工程作品"> -->
+  <!-- 工程作品展示範例（若有需要可使用對應的子資料夾圖片路徑，例如 assets/projects/beverly-hills/thumbs/01.jpg） -->
 
   <section class="sec sec--mist" id="quote">
     <div class="wrap">
@@ -165,7 +163,7 @@ h1 .accent::after{content:"";position:absolute;left:-2px;right:-2px;bottom:6px;h
   </section>
 </main>
 
-<!-- 引入 PDF 支援庫與您的精靈資料、邏輯檔案 -->
+<!-- 引入 PDF 支援庫與您的精靈資料、邏輯檔案（順序：html2pdf -> data.js -> wizard.js） -->
 <script src="vendor/html2pdf.bundle.min.js"></script>
 <script src="data.js"></script>
 <script src="wizard.js"></script>
