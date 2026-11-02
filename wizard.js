@@ -284,6 +284,18 @@
     return lines.join("\n");
   }
 
+  async function copySummary() {
+    const t = summaryText();
+    try {
+      await navigator.clipboard.writeText(t);
+    } catch (e) {
+      const ta = document.createElement("textarea");
+      ta.value = t; document.body.appendChild(ta); ta.select();
+      document.execCommand("copy"); ta.remove();
+    }
+    return t;
+  }
+
   function renderSummary() {
     state.summary = true;
     fill.style.width = "100%";
@@ -294,34 +306,59 @@
       <div class="qz-summary">
         <div class="qz-sum-head">
           <span class="qz-sum-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，可直接複製傳給我們。</p></div>
+          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後送出，我們會將 PDF 報價摘要電郵給你。</p></div>
         </div>
         <dl class="qz-sum-rows">${rows.map(([k, v]) => `<div class="qz-sum-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         <div class="qz-sum-actions">
-          <button class="btn btn-brand" id="qzCopy" type="button">複製摘要</button>
+          <button class="btn btn-brand" id="qzSubmit" type="button">完成並等待報價</button>
           ${wa ? `<a class="btn btn-primary" id="qzWa" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp 傳送摘要</a>` : ""}
-          <button class="btn btn-ghost" id="qzRestart" type="button">重新填寫</button>
-          <button class="btn btn-ghost" id="qzDone" type="button">完成</button>
         </div>
         <p class="qz-sum-msg" id="qzSumMsg" role="status" aria-live="polite"></p>
-        <p class="qz-sum-note">資料只在你的瀏覽器處理，不會上傳；把摘要貼到 WhatsApp／Instagram 私訊，我們會按項目逐項報價。</p>
+        <p class="qz-sum-note">送出後由後台生成 PDF 報價摘要並電郵給你；資料只會用於報價聯絡。</p>
       </div>
     </div>`;
     body.scrollTop = 0;
     btnBack.textContent = "上一題";
 
-    $("#qzCopy", body).addEventListener("click", async () => {
-      const t = summaryText();
-      try {
-        await navigator.clipboard.writeText(t);
-      } catch (e) {
-        const ta = document.createElement("textarea");
-        ta.value = t; document.body.appendChild(ta); ta.select();
-        document.execCommand("copy"); ta.remove();
+    $("#qzSubmit", body).addEventListener("click", async () => {
+      const endpoint = window.QUOTE_ENDPOINT || "";
+      const btn = $("#qzSubmit", body);
+      const msg = $("#qzSumMsg", body);
+
+      if (!endpoint) {
+        await copySummary();
+        msg.textContent = "已複製摘要。後台提交功能尚未連接，請把摘要傳送給我們。";
+        return;
       }
-      const m = $("#qzSumMsg", body);
-      m.textContent = "已複製摘要，可直接貼到 WhatsApp。";
-      setTimeout(() => m.textContent = "", 4000);
+
+      const payload = {
+        submittedAt: new Date().toISOString(),
+        page: location.href,
+        summary: summaryText(),
+        answers: QUESTIONS.filter(q => state.answers[q.id] != null).map(q => ({
+          id: q.id,
+          question: q.text,
+          answer: answerText(q),
+        })),
+      };
+
+      btn.disabled = true;
+      btn.textContent = "提交中…";
+      msg.textContent = "";
+      try {
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+        if (!res.ok) throw new Error(`HTTP ${res.status}`);
+        btn.textContent = "已提交";
+        msg.textContent = "已提交，我們會將 PDF 報價摘要電郵給你。";
+      } catch (e) {
+        btn.disabled = false;
+        btn.textContent = "完成並等待報價";
+        msg.textContent = "提交失敗，請稍後再試，或把摘要傳送給我們。";
+      }
     });
     if (wa) {
       const a = $("#qzWa", body);
@@ -329,8 +366,6 @@
         a.href = `https://wa.me/${wa}?text=${encodeURIComponent(summaryText())}`;
       });
     }
-    $("#qzRestart", body).addEventListener("click", startQz);
-    $("#qzDone", body).addEventListener("click", closeQz);
   }
 
   function startQz() {
