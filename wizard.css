@@ -87,7 +87,7 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
 }
 
 /* ---------- PDF document ---------- */
-.pdf-doc{position:absolute;left:-10000px;top:0;width:794px;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
+.pdf-doc{position:fixed;left:0;top:0;z-index:1;pointer-events:none;width:794px;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
 .pdf-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f2b500;padding-bottom:18px}
 .pdf-logo{height:44px;width:auto}
 .pdf-top-right{text-align:right}

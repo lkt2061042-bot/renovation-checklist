@@ -390,12 +390,14 @@
       await loadPdfLib();
       doc = buildPdfDoc();
       await waitImages(doc);
+      if (document.fonts && document.fonts.ready) await document.fonts.ready;
+      await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
       const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
       await window.html2pdf().set({
         margin: [10, 10, 12, 10],
         filename: `祥信裝修需求摘要_${dateStr}.pdf`,
         image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", logging: false, windowWidth: 794, scrollX: 0, scrollY: 0 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", logging: false },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
         pagebreak: { mode: ["css", "legacy"], avoid: [".pdf-row", ".pdf-fact", ".pdf-group"] },
       }).from(doc).save();
