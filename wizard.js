@@ -5,7 +5,6 @@
   if (!DATA) return;
   const QUESTIONS = DATA.questions;
   const SCOPES = DATA.scopes;
-  const VISION = DATA.vision || {};
   const CONTACT = window.CONTACT || { whatsapp: "", phone: "", email: "" };
 
   const $ = (s, r) => (r || document).querySelector(s);
@@ -147,13 +146,10 @@
   function optionCard(q, o) {
     const on = isSelected(q, o.label);
     const multi = q.type === "multi_choice";
-    const vis = o.ref_image_id ? (VISION[o.ref_image_id] || null) : null;
-    const img = o.ref_image
-      ? `<span class="qopt-img"${vis ? ` title="${esc(vis.title)} — ${esc(vis.author)}（${esc(vis.license)}）"` : ""}><img src="${esc(o.ref_image)}" alt="${esc(o.label)}" loading="lazy"><span class="qopt-credit">${vis ? `示意 · ${esc(vis.author)}` : "示意圖"}</span></span>`
-      : `<span class="qopt-ico"><svg viewBox="0 0 24 24" aria-hidden="true">${CAT_ICONS[q.stage] || ICON_DEFAULT}</svg></span>`;
+    const icon = `<span class="qopt-ico"><svg viewBox="0 0 24 24" aria-hidden="true">${CAT_ICONS[q.stage] || ICON_DEFAULT}</svg></span>`;
     return `<button class="qopt${on ? " is-on" : ""}${multi ? " multi" : ""}" type="button" data-val="${esc(o.label)}" role="${multi ? "checkbox" : "radio"}" aria-checked="${on ? "true" : "false"}">
-      ${img}
-      <span class="qopt-txt"><b>${esc(o.label)}</b>${o.desc ? `<small>${esc(o.desc)}</small>` : ""}${o.ref_note ? `<small class="qopt-ref">${esc(o.ref_note)}</small>` : ""}</span>
+      ${icon}
+      <span class="qopt-txt"><b>${esc(o.label)}</b>${o.desc ? `<small>${esc(o.desc)}</small>` : ""}</span>
       <span class="qopt-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
     </button>`;
   }
