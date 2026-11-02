@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>祥信裝修工程 CheungShun｜香港專業室內設計與裝修工程一站式服務</title>
-<meta name="description" content="祥信裝修工程為您提供全方位裝修服務：公屋居屋、私樓、村屋、商業裝修、局部翻新、度尺報價。 6 年經驗保證，施工嚴謹，價格透明，免費上門度尺與專業報價諮詢。">
+<meta name="description" content="祥信裝修工程為您提供全方位裝修服務：公屋居屋、私樓、村屋、商業裝修、局部翻新、度尺報價。6 年經驗保證，施工嚴謹，價格透明，免費上門度尺與專業報價諮詢。">
 <meta name="theme-color" content="#14161A">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="祥信裝修工程 CheungShun">
@@ -20,7 +20,7 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "name": "祥信裝修工程 CheungShun", "alternateName": "CheungShun Renovation", "description": "專業香港裝修工程服務：公屋居屋、私樓、村屋、商業裝修、局部翻新、度尺報價。施工嚴謹、價格透明、免費上門度尺。護航您的理想安樂窩。", "image": "assets/og.jpg", "areaServed": [{"@type": "AdministrativeArea", "name": "香港島"}, {"@type": "AdministrativeArea", "name": "九龍"}, {"@type": "AdministrativeArea", "name": "新界"}], "knowsAbout": ["公屋居屋", "私人屋苑", "村屋工程", "商業裝修", "局部翻新", "度尺報價"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "name": "祥信裝修工程 CheungShun", "alternateName": "CheungShun Renovation", "description": "專業香港裝修工程服務：公屋居屋、私樓、村屋、商業裝修、局部翻新、度尺報價。施工嚴謹、價格透明、免費上門度尺。", "image": "assets/og.jpg", "areaServed": [{"@type": "AdministrativeArea", "name": "香港島"}, {"@type": "AdministrativeArea", "name": "九龍"}, {"@type": "AdministrativeArea", "name": "新界"}], "knowsAbout": ["公屋居屋", "私人屋苑", "村屋工程", "商業裝修", "局部翻新", "度尺報價"]}</script>
 <style>
 :root{
   --ink:#14161a; --ink-2:#22262e; --ink-3:#4b5361; --muted:#6b7280;
@@ -172,53 +172,6 @@ h1,h2,h3{text-wrap:balance}
 .sec--mist .step::before{background:var(--mist)}
 .sec--mist .step::after{box-shadow:0 0 0 4px var(--mist)}
 
-/* quote form */
-.quote-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:36px;align-items:start}
-.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
-.fgroup{margin-bottom:30px}
-.fgroup:last-child{margin-bottom:0}
-.fgroup>h3{font-size:1rem;display:flex;align-items:center;gap:10px;margin-bottom:6px}
-.fgroup>h3 .dot{width:6px;height:6px;border-radius:50%;background:var(--brand);flex:none}
-.fgroup>p.hint{font-size:.8125rem;color:var(--muted);margin-bottom:14px}
-.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
-.field{display:flex;flex-direction:column;gap:7px}
-.field label{font-size:.8125rem;font-weight:600;color:var(--ink-2)}
-.field select,.field input{appearance:none;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;font-size:.9375rem;background:#fff;color:var(--ink);width:100%;transition:border-color .2s,box-shadow .2s}
-.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
-.field select:focus,.field input:focus{outline:none;border-color:var(--ink-3);box-shadow:0 0 0 3px rgba(20,22,26,.06)}
-.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
-.opt{position:relative;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;cursor:pointer;font-size:.875rem;background:#fff;transition:border-color .18s,background .18s,box-shadow .18s;user-select:none}
-.opt:hover{border-color:#c9c4b6}
-.opt input{position:absolute;opacity:0;width:1px;height:1px}
-.box{width:17px;height:17px;border:1.5px solid #c2bdb0;border-radius:4px;flex:none;display:grid;place-items:center;transition:.18s}
-.box svg{width:10px;height:10px;stroke:#171400;stroke-width:2.6;fill:none;opacity:0;transform:scale(.6);transition:.18s}
-.opt input:checked~.box{background:var(--brand);border-color:var(--brand)}
-.opt input:checked~.box svg{opacity:1;transform:none}
-.opt:has(input:checked){border-color:var(--brand);background:#fffbef}
-.opt input:focus-visible~.box{outline:2px solid var(--brand-ink);outline-offset:2px}
-.opt span{padding-right:4px}
-.opt .del{margin-left:auto;border:0;background:none;padding:2px;cursor:pointer;color:var(--muted);opacity:0;transition:opacity .15s;display:none}
-.opt.is-custom .del{display:block}
-.opt:hover .del{opacity:1}
-.opt .del svg{width:13px;height:13px;stroke:currentColor;stroke-width:2}
-.add{margin-top:10px;display:inline-flex;align-items:center;gap:6px;border:1px dashed #c9c4b6;background:none;color:var(--ink-3);padding:8px 14px;border-radius:999px;font-size:.8125rem;cursor:pointer;transition:.2s}
-.add:hover{border-color:var(--ink-3);color:var(--ink);background:var(--mist)}
-
-/* summary */
-.summary{position:sticky;top:96px;background:var(--ink);color:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-md)}
-.summary h3{font-size:1.0625rem;display:flex;align-items:center;justify-content:space-between;gap:10px}
-.summary .badge{font-size:.75rem;background:rgba(255,255,255,.12);padding:3px 10px;border-radius:999px;font-weight:500}
-.sum-rows{margin-top:18px;display:grid;gap:10px;font-size:.8125rem;max-height:260px;overflow:auto;padding-right:4px}
-.sum-row{display:flex;justify-content:space-between;gap:14px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.09)}
-.sum-row:last-child{border-bottom:0;padding-bottom:0}
-.sum-row dt{color:rgba(255,255,255,.55);flex:none}
-.sum-row dd{margin:0;text-align:right;color:rgba(255,255,255,.92)}
-.sum-empty{margin-top:16px;font-size:.8125rem;color:rgba(255,255,255,.5);line-height:1.7}
-.sum-actions{margin-top:22px;display:grid;gap:9px}
-.sum-actions .btn{width:100%;justify-content:center;font-size:.875rem;padding:12px 18px}
-.sum-note{margin-top:14px;font-size:.6875rem;color:rgba(255,255,255,.42);line-height:1.6}
-.sum-msg{margin-top:10px;font-size:.75rem;color:var(--brand-2);min-height:1.2em}
-
 /* faq */
 .faq{display:grid;gap:0;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);padding:0}
@@ -228,130 +181,121 @@ h1,h2,h3{text-wrap:balance}
 .faq details[open] summary::after{transform:translateY(-30%) rotate(225deg)}
 .faq .ans{padding:0 44px 24px 0;color:var(--ink-3);font-size:.9375rem}
 
-/* contact */
-.cta-band{background:var(--ink);color:#fff;position:relative;overflow:hidden}
-.cta-band::before{content:"";position:absolute;right:-10%;top:-40%;width:60%;aspect-ratio:1;background:radial-gradient(circle,rgba(242,181,0,.18),transparent 65%)}
-.cta-in{position:relative;display:grid;grid-template-columns:1.15fr .85fr;gap:48px;align-items:center;padding:84px 0}
-.cta-in h2{font-size:clamp(1.7rem,3.2vw,2.4rem);color:#fff}
-.cta-in p{margin-top:16px;color:rgba(255,255,255,.66);max-width:34em}
-.cta-list{display:grid;gap:12px;margin-top:30px;font-size:.9rem;color:rgba(255,255,255,.8)}
-.cta-list li{display:flex;align-items:center;gap:12px}
-.cta-list li[hidden]{display:none}
-.cta-list svg{width:18px;height:18px;stroke:var(--brand);fill:none;stroke-width:1.7;flex:none}
-.cta-card{background:#fff;color:var(--ink);border-radius:var(--radius);padding:30px;box-shadow:0 24px 60px rgba(0,0,0,.35)}
-.cta-card h3{font-size:1.0625rem}
-.cta-card p{color:var(--muted);font-size:.875rem;margin-top:8px}
-.cta-card .btn{margin-top:18px;width:100%}
-.cta-card .btn+.btn{margin-top:10px}
-.cta-card .small{margin-top:16px;font-size:.75rem;color:var(--muted);text-align:center}
+/* quote wizard launch */
+.qz-launch{display:grid;place-items:center;padding:8px 0 4px}
+.qz-launch-card{max-width:560px;width:100%;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;text-align:center;box-shadow:var(--shadow-sm)}
+.qz-launch-ico{width:56px;height:56px;margin:0 auto 16px;border-radius:16px;background:#fdf3d4;display:grid;place-items:center}
+.qz-launch-ico svg{width:26px;height:26px;stroke:var(--brand-ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.qz-launch-card h3{font-size:1.25rem}
+.qz-launch-card p{color:var(--muted);font-size:.9rem;margin:10px auto 20px;max-width:34em}
+.qz-launch-card .btn{width:100%}
+.qz-launch-note{margin-top:14px;font-size:.72rem;color:var(--muted)}
 
-/* footer */
-.ftr{background:#0e1013;color:rgba(255,255,255,.62);padding:56px 0 30px;font-size:.875rem}
-.ftr-top{display:flex;justify-content:space-between;gap:40px;align-items:flex-start;padding-bottom:36px;border-bottom:1px solid rgba(255,255,255,.09)}
-.ftr img{height:46px;width:auto}
-.ftr p{margin-top:16px;max-width:30em;font-size:.8125rem;line-height:1.75}
-.ftr-cols{display:flex;gap:64px}
-.ftr-cols h4{color:#fff;font-size:.8125rem;letter-spacing:.08em;margin-bottom:14px}
-.ftr-cols li{margin-bottom:9px}
-.ftr-cols a:hover{color:var(--brand)}
-.ftr-bot{display:flex;justify-content:space-between;gap:20px;padding-top:24px;font-size:.75rem;color:rgba(255,255,255,.38);flex-wrap:wrap}
+/* wizard overlay */
+.qz{position:fixed;inset:0;z-index:200;background:var(--mist);display:flex;flex-direction:column}
+.qz[hidden]{display:none}
+.qz-top{flex:none;display:flex;align-items:center;gap:14px;padding:13px 14px;background:#fff;border-bottom:1px solid var(--line)}
+.qz-close{width:38px;height:38px;flex:none;border:1px solid var(--line);background:#fff;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--ink-3);transition:.2s}
+.qz-close:hover{color:var(--ink);border-color:var(--ink-3)}
+.qz-close svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
+.qz-bar{flex:1;height:7px;background:var(--mist-2);border-radius:999px;overflow:hidden}
+.qz-fill{display:block;height:100%;width:0;background:var(--brand);border-radius:999px;transition:width .35s var(--ease)}
+.qz-count{flex:none;font-size:.78rem;font-weight:600;color:var(--muted);white-space:nowrap}
+.qz-body{flex:1;overflow-y:auto;padding:22px 16px 30px;-webkit-overflow-scrolling:touch}
+.qz-foot{flex:none;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
+.qz-foot .btn{flex:1;padding:14px 18px;font-size:.95rem}
+.qz-foot .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
 
-/* lightbox */
-.lb{position:fixed;inset:0;z-index:120;display:none;background:#08090b;color:#fff;flex-direction:column}
-.lb[open],.lb.is-open{display:flex}
-.lb-top{display:flex;justify-content:space-between;align-items:center;padding:18px 24px;border-bottom:1px solid rgba(255,255,255,.1);flex:none}
-.lb-title{font-size:.9375rem;letter-spacing:.04em}
-.lb-title small{display:block;color:rgba(255,255,255,.45);font-size:.75rem;margin-top:2px;letter-spacing:.06em}
-.lb-btn{width:42px;height:42px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.14);color:#fff;display:grid;place-items:center;cursor:pointer;transition:.2s}
-.lb-btn:hover{background:rgba(255,255,255,.18)}
-.lb-btn svg{width:18px;height:18px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.lb-stage{flex:1;display:grid;grid-template-columns:64px 1fr 64px;align-items:center;gap:8px;padding:12px 16px;min-height:0}
-.lb-fig{margin:0;display:grid;place-items:center;height:100%;min-height:0}
-.lb-fig img{max-width:100%;max-height:100%;object-fit:contain;border-radius:6px;opacity:0;transition:opacity .25s}
-.lb-fig img.is-in{opacity:1}
-.lb-thumbs{display:flex;gap:8px;justify-content:center;padding:10px 16px 20px;overflow-x:auto;flex:none}
-.lb-thumbs button{width:76px;height:54px;border-radius:6px;overflow:hidden;border:2px solid transparent;padding:0;background:none;cursor:pointer;opacity:.5;transition:.2s;flex:none}
-.lb-thumbs button img{width:100%;height:100%;object-fit:cover}
-.lb-thumbs button[aria-current="true"]{opacity:1;border-color:var(--brand)}
-.lb-thumbs button:hover{opacity:.85}
-.lb-count{position:absolute;bottom:calc(100% + 12px);left:0;font-size:.75rem;color:rgba(255,255,255,.5)}
-body.no-scroll{overflow:hidden}
+.qz-card{max-width:640px;margin:0 auto}
+.qz-kicker{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;letter-spacing:.12em;color:var(--brand-ink);font-weight:700}
+.qz-kicker::before{content:"";width:20px;height:2px;background:var(--brand)}
+.qz-card h2{font-size:clamp(1.35rem,5vw,1.85rem);margin:12px 0 8px;letter-spacing:.002em}
+.qz-sub{color:var(--muted);font-size:.9rem;margin:0 0 22px}
+.qz-error{display:none;color:#c62828;font-size:.8rem;margin-top:10px}
+.qz-error.is-on{display:block}
 
-/* reveal */
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
-.reveal.is-in{opacity:1;transform:none}
+/* option cards */
+.qz-opts{display:grid;gap:10px}
+.qopt{position:relative;display:flex;gap:12px;align-items:stretch;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:10px;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s,transform .12s}
+.qopt:hover{border-color:#c9c4b6;transform:translateY(-1px)}
+.qopt.is-on{border-color:var(--brand);background:#fffbef;box-shadow:0 0 0 3px rgba(242,181,0,.12)}
+.qopt-ico{width:44px;height:44px;flex:none;border-radius:11px;background:var(--mist);display:grid;place-items:center;align-self:center}
+.qopt-ico svg{width:21px;height:21px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
+.qopt-txt{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0;padding-right:26px}
+.qopt-txt b{font-size:.95rem;line-height:1.35}
+.qopt-txt small{font-size:.77rem;color:var(--muted);margin-top:3px;line-height:1.45;display:block}
+.qopt-check{position:absolute;top:12px;right:12px;width:22px;height:22px;border:1.6px solid var(--line);border-radius:50%;display:grid;place-items:center;color:transparent;transition:.18s;flex:none}
+.qopt.is-on .qopt-check{background:var(--brand);border-color:var(--brand);color:#171400}
+.qopt-check svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
+.qopt.multi .qopt-check{border-radius:6px}
+.qz-multi-hint{font-size:.74rem;color:var(--muted);margin:0 0 12px}
 
-/* responsive */
-@media (max-width:1024px){
-  .hero-in{grid-template-columns:1fr;gap:40px}
-  .hero-media img{aspect-ratio:16/10}
-  .quote-grid{grid-template-columns:1fr}
-  .summary{position:static}
-  .gal{grid-template-columns:repeat(2,1fr)}
-  .steps{grid-template-columns:repeat(2,1fr);gap:26px 0}
-  .step{padding-right:24px}
-  .cta-in{grid-template-columns:1fr;gap:36px}
-  .nav{display:none}
-  .burger{display:flex}
-  .hdr-cta{display:none}
-  .mnav{display:block;position:fixed;inset:78px 0 auto;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow-md);z-index:79;transform:translateY(-8px);opacity:0;pointer-events:none;transition:.25s var(--ease)}
-  .mnav.is-open{transform:none;opacity:1;pointer-events:auto}
-  .mnav a{display:block;padding:16px 24px;border-bottom:1px solid var(--mist-2);font-size:1rem}
-  .mnav a:last-child{border:0;color:var(--brand-ink);font-weight:600}
-  .ftr-top{flex-direction:column;gap:32px}
-  .ftr-cols{gap:48px}
-}
-@media (max-width:720px){
-  .sec{padding:68px 0}
-  .wrap{width:min(100% - 32px,var(--wrap))}
-  .hero{padding-top:44px}
-  .hero-in{padding-bottom:52px}
-  .hero-badge{left:8px;bottom:12px;padding:12px 14px}
-  .stats ul{grid-template-columns:repeat(2,1fr)}
-  .stats li{border-left:1px solid var(--line);padding:20px 8px}
-  .stats li:nth-child(odd){border-left:0}
-  .stats li:nth-child(n+3){border-top:1px solid var(--line)}
-  .gal{grid-template-columns:1fr}
-  .steps{grid-template-columns:1fr}
-  .step{padding:22px 0 0}
-  .field-row{grid-template-columns:1fr}
-  .form-card{padding:22px}
-  .summary{padding:22px}
-  .sec-head--split{flex-direction:column;align-items:flex-start}
-  .lb-stage{grid-template-columns:1fr;padding:0}
-  .lb-prev,.lb-next{display:none}
-  .lb-top{padding:12px 16px}
-  .cta-in{padding:64px 0}
-  .ftr-cols{flex-direction:column;gap:28px}
-}
+/* inputs */
+.qz-field{width:100%;border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 15px;font-size:1.05rem;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
+.qz-field:focus{outline:none;border-color:var(--ink-3);box-shadow:0 0 0 3px rgba(20,22,26,.06)}
+textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
+.qz-unit{display:flex;align-items:center;gap:10px}
+.qz-unit .qz-field{flex:1}
+.qz-unit b{font-size:.9rem;color:var(--muted);white-space:nowrap}
+.qz-photo{display:grid;place-items:center;gap:10px;border:1.5px dashed #c9c4b6;border-radius:var(--radius);padding:34px 20px;background:#fff;color:var(--muted);text-align:center}
+.qz-photo svg{width:34px;height:34px;stroke:var(--muted);fill:none;stroke-width:1.5;stroke-linecap:round;stroke-linejoin:round}
+.qz-photo p{font-size:.82rem;max-width:30em}
+
+/* summary */
+.qz-summary{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow-sm)}
+.qz-sum-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
+.qz-sum-head .qz-sum-ico{width:44px;height:44px;border-radius:12px;background:#e7f6e9;display:grid;place-items:center;flex:none}
+.qz-sum-head .qz-sum-ico svg{width:22px;height:22px;stroke:#2e7d32;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.qz-sum-head h3{font-size:1.1rem}
+.qz-sum-head p{color:var(--muted);font-size:.8rem;margin-top:2px}
+.qz-sum-rows{margin-top:14px;display:grid;gap:8px;max-height:46vh;overflow:auto;padding-right:4px}
+.qz-sum-row{display:grid;grid-template-columns:1fr;gap:2px;padding:10px 0;border-bottom:1px solid var(--mist-2)}
+.qz-sum-row:last-child{border-bottom:0}
+.qz-sum-row dt{font-size:.72rem;color:var(--muted);letter-spacing:.02em}
+.qz-sum-row dd{margin:0;font-size:.92rem;color:var(--ink);line-height:1.45}
+.qz-sum-actions{margin-top:18px;display:grid;gap:9px}
+.qz-sum-actions .btn{width:100%;justify-content:center;font-size:.9rem}
+.qz-sum-note{margin-top:12px;font-size:.7rem;color:var(--muted);text-align:center;line-height:1.6}
+.qz-sum-msg{margin-top:10px;font-size:.78rem;color:#2e7d32;text-align:center;min-height:1.2em}
+
+/* PDF layout */
+.pdf-stage{position:fixed;left:-20000px;top:0;width:718px;height:0;overflow:hidden;pointer-events:none;z-index:-1}
+.pdf-doc{position:static;width:100%;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
+.pdf-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f2b500;padding-bottom:18px}
+.pdf-logo{height:44px;width:auto}
+.pdf-top-right{text-align:right}
+.pdf-label{font-size:9px;letter-spacing:.18em;color:#8a6400;font-weight:700}
+.pdf-ref{font-size:10px;color:#6b7280;margin-top:4px}
+.pdf-title{font-size:28px;font-weight:700;margin:26px 0 4px;letter-spacing:.02em}
+.pdf-sub{font-size:12px;color:#6b7280;margin-bottom:18px}
+.pdf-meta{font-size:10.5px;color:#4b5361;border-top:1px solid #e3e0d7;border-bottom:1px solid #e3e0d7;padding:8px 0;margin-bottom:18px}
+.pdf-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.pdf-fact{background:#f7f6f2;border-left:3px solid #f2b500;padding:10px 12px;break-inside:avoid}
+.pdf-fact span{display:block;font-size:9px;letter-spacing:.08em;color:#8a6400;font-weight:700}
+.pdf-fact b{display:block;font-size:13px;margin-top:3px;color:#14161a;line-height:1.4}
+.pdf-group{margin-bottom:18px}
+.pdf-head{break-inside:avoid;page-break-inside:avoid;padding-top:6px}
+.pdf-group h3{font-size:12px;color:#14161a;border-bottom:2px solid #14161a;padding-bottom:4px;margin-bottom:0;letter-spacing:.04em}
+.pdf-row{display:grid;grid-template-columns:34% 66%;gap:10px;padding:7px 0;border-bottom:1px solid #efeee8;break-inside:avoid;page-break-inside:avoid}
+.pdf-row:nth-child(even){background:#fbfaf7}
+.pdf-q{color:#6b7280;font-size:10.5px}
+.pdf-a{color:#14161a;font-size:11px;font-weight:600}
+.pdf-foot{margin-top:26px;border-top:2px solid #14161a;padding-top:10px;font-size:9px;color:#6b7280;line-height:1.7}
+.pdf-foot b{color:#14161a}
+
+#qzPrintRoot{display:none}
+@page{size:A4;margin:12mm 10mm}
 @media print{
-  .hdr,.mnav,.hero,.stats,#services,#work,#process,#faq,.cta-band,.ftr,.lb,.filters,
-  .sum-actions,.sum-msg,.sum-note,.add,.sec-head .kicker{display:none!important}
-  body{background:#fff;color:#000;font-size:12pt}
-  .sec{padding:0}
-  .sec-head{margin-bottom:14px}
-  .sec-head h2{font-size:16pt}
-  .quote-grid{display:block}
-  .form-card{border:0;padding:0}
-  .fgroup:not(.has-sel){display:none}
-  .fgroup{margin-bottom:14px;break-inside:avoid}
-  .opt{border:0;padding:2px 0;background:none!important}
-  .opt:has(input:not(:checked)){display:none}
-  .field select{border:0;border-bottom:1px solid #999;border-radius:0;padding:2px 0}
-  .summary{position:static;background:#fff;color:#000;box-shadow:none;padding:18px 0 0;border-top:2px solid #000;margin-top:18px}
-  .summary h3,.summary .badge{color:#000}
-  .summary .badge{border:1px solid #000;background:none}
-  .sum-row{border-bottom:1px solid #ccc}
-  .sum-row dt{color:#444}
-  .sum-row dd{color:#000}
-  .sum-empty{color:#444}
-}
-@media (prefers-reduced-motion:reduce){
-  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
-  .reveal{opacity:1;transform:none}
+  html,body{background:#fff!important}
+  body.is-printing>*:not(#qzPrintRoot){display:none!important}
+  body.is-printing #qzPrintRoot{display:block!important}
+  body.is-printing .pdf-doc{width:auto;max-width:none;background:#fff;color:#14161a;font-size:10.5pt;line-height:1.5}
+  body.is-printing .pdf-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pdf-head,.pdf-row,.pdf-fact,.pdf-facts,.pdf-foot{break-inside:avoid;page-break-inside:avoid}
+  .pdf-group h3{break-after:avoid;page-break-after:avoid}
+  .pdf-doc a{color:inherit;text-decoration:none}
 }
 </style>
-<link rel="stylesheet" href="wizard.css?v=20261102b">
 </head>
 <body>
 <a class="skip" href="#main">跳到主要內容</a>
@@ -363,25 +307,15 @@ body.no-scroll{overflow:hidden}
     </a>
     <nav class="nav" aria-label="頁首導覽">
       <a href="#services">裝修方案</a>
-      <a href="#work">工程實況</a>
-      <a href="#process">專業流程</a>
       <a href="#quote">線上報價</a>
-      <a href="#contact">聯絡我們</a>
+      <a href="#faq">常見問題</a>
     </nav>
     <a class="hdr-cta" href="#quote">
       免費索取估價
       <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
     </a>
-    <button class="burger" id="burger" aria-expanded="false" aria-controls="mnav" aria-label="打開導覽選單"><span></span></button>
   </div>
 </header>
-<nav class="mnav" id="mnav" aria-label="手機選單">
-  <a href="#services">裝修方案</a>
-  <a href="#work">工程實況</a>
-  <a href="#process">專業流程</a>
-  <a href="#faq">常見問題</a>
-  <a href="#contact">聯絡我們</a>
-</nav>
 
 <main id="main">
   <section class="hero">
@@ -389,83 +323,10 @@ body.no-scroll{overflow:hidden}
       <div class="hero-copy">
         <p class="eyebrow">公屋居屋私樓 ｜ 專業裝修估價</p>
         <h1>裝修工程交給我們，<br><span class="accent">一站式</span>省時安心</h1>
-        <p class="lede">祥信裝修工程為您提供全方位室內設計與裝修服務：公屋居屋、私樓、村屋、商業裝修、局部翻新。6 年經驗施工團隊，價格透明，免費上門度尺與專業報價諮詢，助您打造理想安樂窩。</p>
+        <p class="lede">祥信裝修工程為您提供全方位室內設計與裝修服務：公屋居屋、私樓、村屋、商業裝修、局部翻新。6 年經驗施工團隊，價格透明，免費上門度尺與專業報價諮詢。</p>
         <div class="hero-actions">
-          <a class="btn btn-primary" href="#quote">
-            立即預約報價
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-          </a>
-          <a class="btn btn-ghost" href="#work">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="8.5" cy="10" r="1.6"/><path d="M21 16l-5-5-9 8"/></svg>
-            瀏覽工程實況
-          </a>
+          <a class="btn btn-primary" href="#quote">立即預約報價</a>
         </div>
-      </div>
-      <div class="hero-media">
-        <img src="assets/hero.jpg" width="2100" height="1181" alt="祥信裝修工程工程實況：客廳現代簡約風格裝修設計" fetchpriority="high">
-        <div class="hero-badge">
-          <span class="ico" aria-hidden="true">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#14161a" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21h18M5 21V9l7-5 7 5v12"/><path d="M9 21v-6h6v6"/></svg>
-          </span>
-          <div><b>6</b> 年專業經驗<br><span>香港島 ｜ 九龍 ｜ 新界</span></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <div class="stats">
-    <div class="wrap">
-      <ul>
-        <li><b data-count="6">6</b><span>年專業裝修經驗</span></li>
-        <li><b data-count="35">35</b><span>商用工程完工數</span></li>
-        <li><b data-count="7">7</b><span>大型屋苑項目</span></li>
-        <li><b>1<em>個</em></b><span>一站式裝修總承建</span></li>
-      </ul>
-    </div>
-  </div>
-
-  <section class="sec" id="services">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">01 ｜ 裝修方案</span>
-        <h2>一站式專業裝修，<br class="mbr">全方位滿足需求</h2>
-        <p>我們提供涵蓋公屋、居屋、私樓與商業空間的全方位室內裝修與設計服務，從前期度尺規劃到施工落成，讓您全程省心省力。</p>
-      </div>
-      <div class="svc-grid" id="svcGrid"></div>
-    </div>
-  </section>
-
-  <section class="sec sec--mist" id="work">
-    <div class="wrap">
-      <div class="sec-head sec-head--split">
-        <div>
-          <span class="kicker">02 ｜ 工程實況</span>
-          <h2>精選工程案例，<br class="mbr">見證細緻工藝品質</h2>
-          <p>瀏覽過往成功完工項目，了解我們在空間規劃、細節處理及物料選配上的卓越水準。</p>
-        </div>
-        <button class="btn btn-ghost" id="lbAll" type="button">
-          查看全部案例
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
-        </button>
-      </div>
-      <div class="filters" id="filters" role="group" aria-label="篩選案例分類"></div>
-      <div class="gal" id="gal"></div>
-    </div>
-  </section>
-
-  <section class="sec" id="process">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">03 ｜ 專業流程</span>
-        <h2>嚴謹流程，<br>每個環節一絲不苟</h2>
-        <p>透明化五步服務流程，讓您在裝修旅程中隨時掌握進度。</p>
-      </div>
-      <div class="steps">
-        <div class="step"><h3>預約免費度尺</h3><p>了解您的風格喜好、預算需求，並預約專業上門度尺。</p></div>
-        <div class="step"><h3>規劃設計方案</h3><p>依據度尺結果與報價方式擬定詳細方案，提供透明工程預算。</p></div>
-        <div class="step"><h3>確認合約動工</h3><p>確保方案細節無誤，簽訂工程合約並安排師傅進場動工。</p></div>
-        <div class="step"><h3>專業施工監工</h3><p>嚴格施工監察，泥水、木工、水電、油漆嚴格把關，確保進度與品質。</p></div>
-        <div class="step"><h3>驗收交吉入住</h3><p>專業驗收、清潔收尾、提供維修保養承諾，讓您安心入住。</p></div>
       </div>
     </div>
   </section>
@@ -473,8 +334,8 @@ body.no-scroll{overflow:hidden}
   <section class="sec sec--mist" id="quote">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker">04 ｜ 裝修報價</h3>
-        <h2>馬上開始，<br class="mbr">訂製專屬裝修方案</h2>
+        <span class="kicker">04 ｜ 裝修報價</span>
+        <h2>馬上開始，訂製專屬裝修方案</h2>
         <p>一分鐘填寫，即時獲取初步報價參考。系統會引導您完成各項工程細節，並可一鍵下載 PDF 摘要傳送給我們。</p>
       </div>
       <div class="qz-launch">
@@ -485,34 +346,442 @@ body.no-scroll{overflow:hidden}
           <h3>開始互動式報價精靈</h3>
           <p>大約 3 至 5 分鐘完成，隨時隨地產生 PDF 報價摘要。您可以直接在網站完成，或透過 WhatsApp 傳送給我們跟進。</p>
           <button class="btn btn-primary" id="qzStart" type="button">開始互動式精靈</button>
-          <p class="qz-launch-note">完成後可隨時下載 PDF，或直接傳送至 WhatsApp / Instagram 查詢。</p>
+          <p class="qz-launch-note">完成後可隨時下載 PDF，或直接傳送至 WhatsApp 查詢。</p>
         </div>
       </div>
     </div>
   </section>
-
-  <section class="sec" id="faq">
-    <div class="wrap">
-      <div class="sec-head">
-        <span class="kicker">05 ｜ 常見問題</span>
-        <h2>裝修疑問，您可以了解</h2>
-      </div>
-      <div class="faq">
-        <details>
-          <summary>裝修工程期幾長？可以幫忙分期付款嗎？</summary>
-          <div class="ans">我們提供標準分期付款方案：訂金、施工進度款、完工驗收尾款，讓您分階段支付工程費用。工程期因應工程複雜度而定，標準公屋居屋約需 2 至 3 個月。</div>
-        </details>
-        <details>
-          <summary>可以自備物料或判頭施工嗎？</summary>
-          <div class="ans">可以客製化需求，您可以自備部分物料（如磁磚、潔具、燈飾等），我們亦提供一站式全包物料與設計方案。具體細節可在度尺時進一步商討。</div>
-        </details>
-        <details>
-          <summary>完工之餘有保養期嗎？</summary>
-          <div class="ans">有信心保證：我們所有工程均提供結構及工藝保養，涵蓋泥水、木工、水電、油漆，細緻照顧每位業主的需要。完工後有任何問題，隨時聯絡我們團隊處理。</div>
-        </details>
-      </div>
-    </div>
-  </section>
 </main>
+
+<!-- 完整報價資料與互動精靈主邏輯 -->
+<script>
+window.CONTACT = { whatsapp: "85212345678" };
+window.RENO_DATA = {
+  scopes: [
+    { name: "全屋重做", months: 3 },
+    { name: "只做傢俬", months: 1.5 },
+    { name: "鋁窗更換", months: 1 },
+    { name: "增加一個房間", months: 1 },
+    { name: "廚房翻新", months: 1.5 },
+    { name: "廁所翻新", months: 1.5 }
+  ],
+  questions: [
+    {
+      id: "Q001",
+      stage: "報價方式",
+      stage_order: 10,
+      order: 1,
+      text: "你想用哪一種方式報價？",
+      subtitle: "先選報價方式，系統會按需要顯示不同深度的問題。",
+      type: "single_choice",
+      modes: "簡單;精準",
+      scopes: ["ALL"],
+      required: true,
+      options: [
+        { id: "Q001-O1", order: 1, label: "精準報價", desc: "按尺寸、材料及現場條件逐項估算，適合準備施工的客人。" },
+        { id: "Q001-O2", order: 2, label: "簡單報價", desc: "用基本資料快速取得預算範圍，適合初步比較。" }
+      ]
+    },
+    {
+      id: "Q002",
+      stage: "基本資料",
+      stage_order: 20,
+      order: 1,
+      text: "你的單位屬於哪一類物業？",
+      subtitle: "不同物業類型的申請程序、施工限制及報價會有所不同。",
+      type: "single_choice",
+      modes: "簡單;精準",
+      scopes: ["ALL"],
+      required: true,
+      options: [
+        { id: "Q002-O1", order: 1, label: "公屋", desc: "政府興建單位，裝修及改動限制較多。" },
+        { id: "Q002-O2", order: 2, label: "居屋", desc: "資助出售單位，需留意管理處及屋苑規定。" },
+        { id: "Q002-O3", order: 3, label: "私人屋苑", desc: "私人住宅，通常有管理處裝修申請。" },
+        { id: "Q002-O4", order: 4, label: "村屋", desc: "新界村屋，可能涉及結構、僭建或水電限制。" },
+        { id: "Q002-O5", order: 5, label: "唐樓", desc: "舊式大廈，可能無升降機或需行樓梯。" },
+        { id: "Q002-O6", order: 6, label: "商舖／寫字樓", desc: "商業空間，另有消防、牌照及營業時間限制。" }
+      ]
+    },
+    {
+      id: "Q003",
+      stage: "基本資料",
+      stage_order: 20,
+      order: 2,
+      text: "單位實用面積大約多少平方呎？",
+      subtitle: "可用建築面積或實用面積；如不確定，選最接近的範圍後由設計師覆核。",
+      type: "number",
+      modes: "簡單;精準",
+      scopes: ["ALL"],
+      required: true,
+      unit: "平方呎",
+      min: 50,
+      max: 10000,
+      options: []
+    },
+    {
+      id: "Q010",
+      stage: "工作範圍",
+      stage_order: 30,
+      order: 1,
+      text: "你這次想做哪些工程？",
+      subtitle: "可多選；這是提取問題及計算工期的關鍵。",
+      type: "multi_choice",
+      modes: "簡單;精準",
+      scopes: ["ALL"],
+      required: true,
+      options: [
+        { id: "Q010-O1", order: 1, label: "全屋重做", desc: "全屋拆改、水電、泥水、油漆及傢俬。" },
+        { id: "Q010-O2", order: 2, label: "只做傢俬", desc: "只訂造及安裝傢俬，不做大型土木工程。" },
+        { id: "Q010-O3", order: 3, label: "鋁窗更換", desc: "更換全屋或部分鋁窗。" },
+        { id: "Q010-O5", order: 5, label: "廚房翻新", desc: "拆改、水電、防水、磁磚及廚櫃。" },
+        { id: "Q010-O6", order: 6, label: "廁所翻新", desc: "拆改、防水、磁磚及潔具。" }
+      ]
+    },
+    {
+      id: "Q011",
+      stage: "工作範圍",
+      stage_order: 30,
+      order: 2,
+      text: "你想哪一天開始工程？",
+      subtitle: "請選擇年月日；系統會按工作範圍自動計算預計完工日期。",
+      type: "date",
+      modes: "簡單;精準",
+      scopes: ["ALL"],
+      required: true,
+      options: []
+    }
+  ]
+};
+
+(function () {
+  "use strict";
+  const DATA = window.RENO_DATA;
+  if (!DATA) return;
+  const QUESTIONS = DATA.questions;
+  const CONTACT = window.CONTACT || { whatsapp: "", phone: "", email: "" };
+
+  const $ = (s, r) => (r || document).querySelector(s);
+  const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
+
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  }
+
+  const state = { answers: {}, flow: [], idx: 0, summary: false };
+
+  const overlay = document.createElement("div");
+  overlay.className = "qz";
+  overlay.id = "qz";
+  overlay.setAttribute("role", "dialog");
+  overlay.setAttribute("aria-modal", "true");
+  overlay.setAttribute("aria-label", "裝修需求單");
+  overlay.hidden = true;
+  overlay.innerHTML = `
+    <div class="qz-top">
+      <button class="qz-close" id="qzClose" type="button" aria-label="關閉需求單">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+      <div class="qz-bar"><span class="qz-fill" id="qzFill"></span></div>
+      <div class="qz-count" id="qzCount">準備中</div>
+    </div>
+    <div class="qz-body" id="qzBody"></div>
+    <div class="qz-foot">
+      <button class="btn btn-ghost" id="qzBack" type="button">上一題</button>
+      <button class="btn btn-primary" id="qzNext" type="button">下一題</button>
+    </div>`;
+  document.body.appendChild(overlay);
+
+  const printRoot = document.createElement("div");
+  printRoot.id = "qzPrintRoot";
+  document.body.appendChild(printRoot);
+
+  const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
+  const body = $("#qzBody");
+  const fill = $("#qzFill");
+  const count = $("#qzCount");
+  const btnBack = $("#qzBack");
+  const btnNext = $("#qzNext");
+
+  function modeOf() {
+    const v = state.answers.Q001;
+    return v === "精準報價" ? "精準" : v === "簡單報價" ? "簡單" : null;
+  }
+  function scopesOf() {
+    return state.answers.Q010 || [];
+  }
+  function valueOf(qid) { return state.answers[qid]; }
+  function setValue(qid, val) {
+    if (val === "" || val === null || val === undefined || (Array.isArray(val) && !val.length)) {
+      delete state.answers[qid];
+    } else {
+      state.answers[qid] = val;
+    }
+  }
+
+  function buildFlow() {
+    const flow = [];
+    for (const q of QUESTIONS) {
+      flow.push(q);
+    }
+    return flow;
+  }
+
+  function answerValue(q) {
+    const v = state.answers[q.id];
+    if (q.type === "multi_choice") return Array.isArray(v) && v.length ? v : null;
+    return v || null;
+  }
+  function answerText(q) {
+    const v = state.answers[q.id];
+    if (v == null) return "";
+    if (Array.isArray(v)) return v.join("、");
+    if (q.type === "number" && q.unit) return `${v} ${q.unit}`;
+    return String(v);
+  }
+  function isSelected(q, label) {
+    const v = state.answers[q.id];
+    return Array.isArray(v) ? v.includes(label) : v === label;
+  }
+  function validate(q) {
+    if (!q.required) return true;
+    const v = answerValue(q);
+    if (v == null) return false;
+    return true;
+  }
+
+  function optionCard(q, o) {
+    const on = isSelected(q, o.label);
+    const multi = q.type === "multi_choice";
+    return `<button class="qopt${on ? " is-on" : ""}${multi ? " multi" : ""}" type="button" data-val="${esc(o.label)}">
+      <span class="qopt-txt"><b>${esc(o.label)}</b>${o.desc ? `<small>${esc(o.desc)}</small>` : ""}</span>
+      <span class="qopt-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
+    </button>`;
+  }
+
+  function inputHTML(q) {
+    const v = state.answers[q.id] || "";
+    if (q.type === "single_choice" || q.type === "multi_choice") {
+      const hint = q.type === "multi_choice" ? `<p class="qz-multi-hint">可選多項，選好後按「下一題」。</p>` : "";
+      return `${hint}<div class="qz-opts">${q.options.map(o => optionCard(q, o)).join("")}</div>`;
+    }
+    if (q.type === "number") {
+      return `<div class="qz-unit"><input class="qz-field" type="number" inputmode="decimal" id="qzInput" value="${esc(v)}" placeholder="請輸入數字">${q.unit ? `<b>${esc(q.unit)}</b>` : ""}</div>`;
+    }
+    if (q.type === "date") {
+      return `<input class="qz-field" type="date" id="qzInput" value="${esc(v)}">`;
+    }
+    return `<input class="qz-field" type="text" id="qzInput" value="${esc(v)}" placeholder="請輸入">`;
+  }
+
+  function syncFlow(keepId) {
+    state.flow = buildFlow();
+    if (keepId) {
+      const i = state.flow.findIndex(x => x.id === keepId);
+      if (i >= 0) state.idx = i;
+    }
+  }
+
+  function renderCurrent() {
+    const q = state.flow[state.idx];
+    if (!q) { renderSummary(); return; }
+    state.summary = false;
+    const pct = state.flow.length ? ((state.idx + 1) / state.flow.length) * 100 : 0;
+    fill.style.width = pct + "%";
+    count.textContent = `第 ${state.idx + 1} / ${state.flow.length} 題`;
+    body.innerHTML = `<div class="qz-card">
+      <span class="qz-kicker">${esc(q.stage)}</span>
+      <h2>${esc(q.text)}</h2>
+      ${q.subtitle ? `<p class="qz-sub">${esc(q.subtitle)}</p>` : ""}
+      ${inputHTML(q)}
+      <p class="qz-error" id="qzErr"></p>
+    </div>`;
+    body.scrollTop = 0;
+
+    const input = $("#qzInput", body);
+    if (input) {
+      input.addEventListener("input", () => {
+        setValue(q.id, input.value.trim());
+        hideError();
+      });
+      if (q.type !== "date") input.focus({ preventScroll: true });
+    }
+
+    $$(".qopt", body).forEach(btn => {
+      btn.addEventListener("click", () => {
+        const label = btn.dataset.val;
+        if (q.type === "multi_choice") {
+          const cur = Array.isArray(state.answers[q.id]) ? state.answers[q.id].slice() : [];
+          const on = cur.includes(label);
+          setValue(q.id, on ? cur.filter(x => x !== label) : cur.concat(label));
+          hideError();
+          renderCurrent();
+        } else {
+          setValue(q.id, label);
+          hideError();
+          syncFlow(q.id);
+          renderCurrent();
+          if (state.idx < state.flow.length - 1) {
+            setTimeout(() => { if (!state.summary) next(); }, 200);
+          }
+        }
+      });
+    });
+
+    btnNext.disabled = false;
+    btnBack.textContent = state.idx === 0 ? "關閉" : "上一題";
+  }
+
+  function showError(q) {
+    const el = $("#qzErr", body);
+    if (el) {
+      el.textContent = "請先完成此題。";
+      el.classList.add("is-on");
+    }
+  }
+  function hideError() {
+    const el = $("#qzErr", body);
+    if (el) el.classList.remove("is-on");
+  }
+
+  function next() {
+    const q = state.flow[state.idx];
+    if (!validate(q)) { showError(q); return; }
+    if (state.idx >= state.flow.length - 1) { renderSummary(); return; }
+    state.idx++;
+    syncFlow(state.flow[state.idx].id);
+    renderCurrent();
+  }
+  function back() {
+    if (state.summary) { state.summary = false; renderCurrent(); return; }
+    if (state.idx <= 0) { closeQz(); return; }
+    state.idx--;
+    syncFlow(state.flow[state.idx].id);
+    renderCurrent();
+  }
+
+  function summaryRows() {
+    const rows = [];
+    for (const q of QUESTIONS) {
+      if (state.answers[q.id] != null) {
+        rows.push([q.text, answerText(q)]);
+      }
+    }
+    return rows;
+  }
+  function summaryText() {
+    const rows = summaryRows();
+    if (!rows.length) return "";
+    const lines = ["【裝修需求摘要】", ""];
+    rows.forEach(([k, v]) => lines.push(`${k}：${v}`));
+    return lines.join("\n");
+  }
+
+  function fmtDate(value) {
+    if (!value) return "待定";
+    const d = new Date(value + "T00:00:00");
+    if (isNaN(d)) return String(value);
+    return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+  }
+
+  function buildPdfDoc() {
+    const now = new Date();
+    const rows = summaryRows();
+    const rowHtml = rows.map(([k, v]) => `<div class="pdf-row"><div class="pdf-q">${esc(k)}</div><div class="pdf-a">${esc(v)}</div></div>`).join("");
+
+    const doc = document.createElement("div");
+    doc.className = "pdf-doc";
+    doc.innerHTML = `
+      <div class="pdf-top">
+        <div class="pdf-top-right">
+          <div class="pdf-label">QUOTATION BRIEF</div>
+          <div class="pdf-ref">QS-${now.getFullYear()}</div>
+        </div>
+      </div>
+      <div class="pdf-title">裝修需求報價摘要</div>
+      <div class="pdf-sub">祥信裝修工程 CheungShun · 香港住宅裝修</div>
+      <div class="pdf-meta">建立日期：${esc(now.toLocaleDateString())} ｜ 資料來源：網站需求單</div>
+      <div class="pdf-group">
+        <div class="pdf-head"><h3>填寫內容摘要</h3></div>
+        ${rowHtml}
+      </div>
+      <div class="pdf-foot">
+        <div><b>備註：</b>本摘要由客人於網站填寫的資料自動生成，只供初步參考。</div>
+        <div>實際工程範圍、物料、數量及金額，以現場度尺及正式報價單為準。</div>
+      </div>`;
+    return doc;
+  }
+
+  function printSummary(msg) {
+    printRoot.innerHTML = "";
+    const doc = buildPdfDoc();
+    printRoot.appendChild(doc);
+    document.body.classList.add("is-printing");
+    const done = () => {
+      window.removeEventListener("afterprint", done);
+      printRoot.innerHTML = "";
+      document.body.classList.remove("is-printing");
+    };
+    window.addEventListener("afterprint", done);
+    if (msg) msg.textContent = "請在列印視窗選擇「另存為 PDF / 儲存到檔案」。";
+    window.print();
+  }
+
+  function renderSummary() {
+    state.summary = true;
+    fill.style.width = "100%";
+    count.textContent = "完成";
+    const rows = summaryRows();
+    const wa = CONTACT.whatsapp;
+    body.innerHTML = `<div class="qz-card">
+      <div class="qz-summary">
+        <div class="qz-sum-head">
+          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後可下載或列印 PDF 摘要。</p></div>
+        </div>
+        <dl class="qz-sum-rows">${rows.map(([k, v]) => `<div class="qz-sum-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
+        <div class="qz-sum-actions">
+          <button class="btn btn-brand" id="qzPrint" type="button">列印 / 儲存 PDF</button>
+          ${wa ? `<a class="btn btn-primary" id="qzWa" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp 傳送摘要</a>` : ""}
+        </div>
+        <p class="qz-sum-msg" id="qzSumMsg" role="status" aria-live="polite"></p>
+        <p class="qz-sum-note">iPhone / iPad / 電腦：按「列印 / 儲存 PDF」即可儲存檔案。</p>
+      </div>
+    </div>`;
+    body.scrollTop = 0;
+    btnBack.textContent = "上一題";
+
+    $("#qzPrint", body).addEventListener("click", () => {
+      printSummary($("#qzSumMsg", body));
+    });
+    if (wa) {
+      const a = $("#qzWa", body);
+      a.addEventListener("click", () => {
+        a.href = `https://wa.me/${wa}?text=${encodeURIComponent(summaryText())}`;
+      });
+    }
+  }
+
+  function startQz() {
+    state.answers = {};
+    state.idx = 0;
+    state.summary = false;
+    syncFlow();
+    overlay.hidden = false;
+    document.body.classList.add("no-scroll");
+    renderCurrent();
+  }
+  function closeQz() {
+    overlay.hidden = true;
+    document.body.classList.remove("no-scroll");
+  }
+
+  const launch = $("#qzStart");
+  if (launch) launch.addEventListener("click", startQz);
+  $("#qzClose").addEventListener("click", closeQz);
+  btnNext.addEventListener("click", () => next());
+  btnBack.addEventListener("click", back);
+  overlay.addEventListener("click", e => { if (e.target === overlay) closeQz(); });
+})();
+</script>
 </body>
 </html>
