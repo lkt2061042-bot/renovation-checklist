@@ -3,14 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>祥信裝修工程 CheungShun｜香港專業室內設計與裝修工程一站式服務</title>
-<meta name="description" content="祥信裝修工程為您提供全方位裝修服務：公屋居屋、私樓、村屋、商業裝修、局部翻新、度尺報價。6 年經驗保證，施工嚴謹，價格透明，免費上門度尺與專業報價諮詢。">
+<title>祥信裝修工程 CheungShun｜香港住宅裝修・度尺報價・完工實景</title>
+<meta name="description" content="祥信裝修工程專營香港住宅裝修：泥水、水電、油漆、訂造傢俬、鋁窗及雜項工程。附 6 個屋苑完工實景，可線上填寫裝修需求單，按項目逐項報價。">
 <meta name="theme-color" content="#14161A">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="祥信裝修工程 CheungShun">
 <meta property="og:url" content="https://lkt2061042-bot.github.io/renovation-checklist/">
-<meta property="og:title" content="祥信裝修工程 CheungShun｜香港專業室內設計與裝修工程">
-<meta property="og:description" content="裝修工程交給我們，省時省力省心。專業團隊為您量身訂造最合適的裝修方案。">
+<meta property="og:title" content="祥信裝修工程 CheungShun｜香港住宅裝修">
+<meta property="og:description" content="由度尺到交鎖，一個團隊跟到尾。6 個屋苑完工實景，線上需求單即時生成報價摘要。">
 <meta property="og:image" content="https://lkt2061042-bot.github.io/renovation-checklist/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -20,7 +20,7 @@
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32">
 <link rel="apple-touch-icon" href="assets/icon.png">
 <link rel="preload" as="image" href="assets/hero.jpg" fetchpriority="high">
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "name": "祥信裝修工程 CheungShun", "alternateName": "CheungShun Renovation", "description": "專業香港裝修工程服務：公屋居屋、私樓、村屋、商業裝修、局部翻新、度尺報價。施工嚴謹、價格透明、免費上門度尺。", "image": "assets/og.jpg", "areaServed": [{"@type": "AdministrativeArea", "name": "香港島"}, {"@type": "AdministrativeArea", "name": "九龍"}, {"@type": "AdministrativeArea", "name": "新界"}], "knowsAbout": ["公屋居屋", "私人屋苑", "村屋工程", "商業裝修", "局部翻新", "度尺報價"]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "HomeAndConstructionBusiness", "name": "祥信裝修工程 CheungShun", "alternateName": "CheungShun Renovation", "description": "香港住宅裝修工程：泥水、水電、油漆、訂造傢俬、鋁窗及雜項，提供度尺、逐項報價及完工實景。", "image": "assets/og.jpg", "areaServed": [{"@type": "AdministrativeArea", "name": "香港島"}, {"@type": "AdministrativeArea", "name": "九龍"}, {"@type": "AdministrativeArea", "name": "新界"}], "knowsAbout": ["住宅裝修", "泥水工程", "水電工程", "油漆工程", "訂造傢俬", "鋁窗工程"]}</script>
 <style>
 :root{
   --ink:#14161a; --ink-2:#22262e; --ink-3:#4b5361; --muted:#6b7280;
@@ -234,7 +234,7 @@ body.no-scroll{overflow:hidden}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.is-in{opacity:1;transform:none}
 
-/* quote wizard launch */
+/* quote wizard styles (inlined from wizard.css) */
 .qz-launch{display:grid;place-items:center;padding:8px 0 4px}
 .qz-launch-card{max-width:560px;width:100%;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;text-align:center;box-shadow:var(--shadow-sm)}
 .qz-launch-ico{width:56px;height:56px;margin:0 auto 16px;border-radius:16px;background:#fdf3d4;display:grid;place-items:center}
@@ -244,7 +244,6 @@ body.no-scroll{overflow:hidden}
 .qz-launch-card .btn{width:100%}
 .qz-launch-note{margin-top:14px;font-size:.72rem;color:var(--muted)}
 
-/* wizard overlay */
 .qz{position:fixed;inset:0;z-index:200;background:var(--mist);display:flex;flex-direction:column}
 .qz[hidden]{display:none}
 .qz-top{flex:none;display:flex;align-items:center;gap:14px;padding:13px 14px;background:#fff;border-bottom:1px solid var(--line)}
@@ -267,13 +266,10 @@ body.no-scroll{overflow:hidden}
 .qz-error{display:none;color:#c62828;font-size:.8rem;margin-top:10px}
 .qz-error.is-on{display:block}
 
-/* option cards */
 .qz-opts{display:grid;gap:10px}
 .qopt{position:relative;display:flex;gap:12px;align-items:stretch;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:10px;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s,transform .12s}
 .qopt:hover{border-color:#c9c4b6;transform:translateY(-1px)}
 .qopt.is-on{border-color:var(--brand);background:#fffbef;box-shadow:0 0 0 3px rgba(242,181,0,.12)}
-.qopt-ico{width:44px;height:44px;flex:none;border-radius:11px;background:var(--mist);display:grid;place-items:center;align-self:center}
-.qopt-ico svg{width:21px;height:21px;stroke:var(--ink);fill:none;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}
 .qopt-txt{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0;padding-right:26px}
 .qopt-txt b{font-size:.95rem;line-height:1.35}
 .qopt-txt small{font-size:.77rem;color:var(--muted);margin-top:3px;line-height:1.45;display:block}
@@ -283,19 +279,14 @@ body.no-scroll{overflow:hidden}
 .qopt.multi .qopt-check{border-radius:6px}
 .qz-multi-hint{font-size:.74rem;color:var(--muted);margin:0 0 12px}
 
-/* inputs */
 .qz-field{width:100%;border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 15px;font-size:1.05rem;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
 .qz-field:focus{outline:none;border-color:var(--ink-3);box-shadow:0 0 0 3px rgba(20,22,26,.06)}
-textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
 .qz-unit{display:flex;align-items:center;gap:10px}
 .qz-unit .qz-field{flex:1}
 .qz-unit b{font-size:.9rem;color:var(--muted);white-space:nowrap}
 
-/* summary */
 .qz-summary{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow-sm)}
 .qz-sum-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.qz-sum-head .qz-sum-ico{width:44px;height:44px;border-radius:12px;background:#e7f6e9;display:grid;place-items:center;flex:none}
-.qz-sum-head .qz-sum-ico svg{width:22px;height:22px;stroke:#2e7d32;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .qz-sum-head h3{font-size:1.1rem}
 .qz-sum-head p{color:var(--muted);font-size:.8rem;margin-top:2px}
 .qz-sum-rows{margin-top:14px;display:grid;gap:8px;max-height:46vh;overflow:auto;padding-right:4px}
@@ -307,38 +298,6 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
 .qz-sum-actions .btn{width:100%;justify-content:center;font-size:.9rem}
 .qz-sum-note{margin-top:12px;font-size:.7rem;color:var(--muted);text-align:center;line-height:1.6}
 .qz-sum-msg{margin-top:10px;font-size:.78rem;color:#2e7d32;text-align:center;min-height:1.2em}
-
-/* PDF layout */
-.pdf-doc{position:static;width:100%;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
-.pdf-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f2b500;padding-bottom:18px}
-.pdf-top-right{text-align:right}
-.pdf-label{font-size:9px;letter-spacing:.18em;color:#8a6400;font-weight:700}
-.pdf-ref{font-size:10px;color:#6b7280;margin-top:4px}
-.pdf-title{font-size:28px;font-weight:700;margin:26px 0 4px;letter-spacing:.02em}
-.pdf-sub{font-size:12px;color:#6b7280;margin-bottom:18px}
-.pdf-meta{font-size:10.5px;color:#4b5361;border-top:1px solid #e3e0d7;border-bottom:1px solid #e3e0d7;padding:8px 0;margin-bottom:18px}
-.pdf-group{margin-bottom:18px}
-.pdf-head{break-inside:avoid;page-break-inside:avoid;padding-top:6px}
-.pdf-group h3{font-size:12px;color:#14161a;border-bottom:2px solid #14161a;padding-bottom:4px;margin-bottom:0;letter-spacing:.04em}
-.pdf-row{display:grid;grid-template-columns:34% 66%;gap:10px;padding:7px 0;border-bottom:1px solid #efeee8;break-inside:avoid;page-break-inside:avoid}
-.pdf-row:nth-child(even){background:#fbfaf7}
-.pdf-q{color:#6b7280;font-size:10.5px}
-.pdf-a{color:#14161a;font-size:11px;font-weight:600}
-.pdf-foot{margin-top:26px;border-top:2px solid #14161a;padding-top:10px;font-size:9px;color:#6b7280;line-height:1.7}
-.pdf-foot b{color:#14161a}
-
-#qzPrintRoot{display:none}
-@page{size:A4;margin:12mm 10mm}
-@media print{
-  html,body{background:#fff!important}
-  body.is-printing>*:not(#qzPrintRoot){display:none!important}
-  body.is-printing #qzPrintRoot{display:block!important}
-  body.is-printing .pdf-doc{width:auto;max-width:none;background:#fff;color:#14161a;font-size:10.5pt;line-height:1.5}
-  body.is-printing .pdf-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .pdf-head,.pdf-row,.pdf-foot{break-inside:avoid;page-break-inside:avoid}
-  .pdf-group h3{break-after:avoid;page-break-after:avoid}
-  .pdf-doc a{color:inherit;text-decoration:none}
-}
 
 /* responsive */
 @media (max-width:1024px){
@@ -414,9 +373,9 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
   <section class="hero">
     <div class="wrap hero-in">
       <div class="hero-copy">
-        <p class="eyebrow">公屋居屋私樓 ｜ 專業裝修估價</p>
-        <h1>裝修工程交給我們，<br><span class="accent">一站式</span>省時安心</h1>
-        <p class="lede">祥信裝修工程為您提供全方位室內設計與裝修服務：公屋居屋、私樓、村屋、商業裝修、局部翻新。6 年經驗施工團隊，價格透明，免費上門度尺與專業報價諮詢。</p>
+        <p class="eyebrow">香港住宅裝修 · 度尺報價</p>
+        <h1>由度尺到交鎖，<br><span class="accent">一個團隊</span>跟到尾。</h1>
+        <p class="lede">祥信裝修工程專營住宅全屋及局部翻新：泥水、水電、油漆、訂造傢俬、鋁窗及雜項，逐項列明報價。先睇真實完工相片，再填需求單，我們按你的預算逐項回覆。</p>
         <div class="hero-actions">
           <a class="btn btn-primary" href="#quote">
             填寫裝修需求單
@@ -500,19 +459,19 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
   <section class="sec sec--mist" id="quote">
     <div class="wrap">
       <div class="sec-head">
-        <span class="kicker">04 ｜ 裝修報價</span>
-        <h2>馬上開始，訂製專屬裝修方案</h2>
-        <p>一分鐘填寫，即時獲取初步報價參考。系統會引導您完成各項工程細節，並可一鍵下載 PDF 摘要傳送給我們。</p>
+        <span class="kicker">04 — 裝修需求單</span>
+        <h2>逐題回答，<br class="mbr">即時生成報價摘要</h2>
+        <p>一頁一題，跟著進度條完成。按你選擇的報價方式及工程範圍，系統自動出題；可複製摘要直接傳給我們。</p>
       </div>
       <div class="qz-launch">
         <div class="qz-launch-card">
           <span class="qz-launch-ico" aria-hidden="true">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
           </span>
-          <h3>開始互動式報價精靈</h3>
-          <p>大約 3 至 5 分鐘完成，隨時隨地產生 PDF 報價摘要。您可以直接在網站完成，或透過 WhatsApp 傳送給我們跟進。</p>
-          <button class="btn btn-primary" id="qzStart" type="button">開始互動式精靈</button>
-          <p class="qz-launch-note">完成後可隨時下載 PDF，或直接傳送至 WhatsApp 查詢。</p>
+          <h3>開始填寫需求單</h3>
+          <p>約 5–10 分鐘完成，可以中途返回修改。資料只在你的瀏覽器內處理，不會上傳到伺服器。</p>
+          <button class="btn btn-primary" id="qzStart" type="button">開始填寫</button>
+          <p class="qz-launch-note">完成後可複製摘要，貼到 WhatsApp／Instagram 私訊。</p>
         </div>
       </div>
     </div>
@@ -627,8 +586,22 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
+<!-- 內嵌所有資料與互動報價精靈邏輯，確保本機與 GitHub 都能順暢運行 -->
 <script>
-const PROJECTS = [{"slug":"north-point","name":"北角 港運城","district":"港島東","count":6,"items":[{"src":"assets/projects/north-point/01.jpg","thumb":"assets/projects/north-point/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24392.jpg"},{"src":"assets/projects/north-point/02.jpg","thumb":"assets/projects/north-point/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24391.jpg"},{"src":"assets/projects/north-point/03.jpg","thumb":"assets/projects/north-point/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24369.jpg"},{"src":"assets/projects/north-point/04.jpg","thumb":"assets/projects/north-point/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24384.jpg"},{"src":"assets/projects/north-point/05.jpg","thumb":"assets/projects/north-point/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24386.jpg"},{"src":"assets/projects/north-point/06.jpg","thumb":"assets/projects/north-point/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24390.jpg"}],"cover":"assets/projects/north-point/cover.jpg","cover_w":1000,"cover_h":750},{"slug":"tai-hang","name":"大坑 昍逵閣","district":"港島東","count":6,"items":[{"src":"assets/projects/tai-hang/01.jpg","thumb":"assets/projects/tai-hang/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24148.jpg"},{"src":"assets/projects/tai-hang/02.jpg","thumb":"assets/projects/tai-hang/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24147.jpg"},{"src":"assets/projects/tai-hang/03.jpg","thumb":"assets/projects/tai-hang/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24146.jpg"},{"src":"assets/projects/tai-hang/04.jpg","thumb":"assets/projects/tai-hang/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24152.jpg"},{"src":"assets/projects/tai-hang/05.jpg","thumb":"assets/projects/tai-hang/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24157.jpg"},{"src":"assets/projects/tai-hang/06.jpg","thumb":"assets/projects/tai-hang/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24156.jpg"}],"cover":"assets/projects/tai-hang/cover.jpg","cover_w":1000,"cover_h":750},{"slug":"taikoo-shing","name":"太古城 金山閣","district":"港島東","count":5,"items":[{"src":"assets/projects/taikoo-shing/01.jpg","thumb":"assets/projects/taikoo-shing/thumbs/01.jpg","w":760,"h":461,"orig":"item_24159.jpg"},{"src":"assets/projects/taikoo-shing/02.jpg","thumb":"assets/projects/taikoo-shing/thumbs/02.jpg","w":960,"h":640,"orig":"item_24161.jpg"},{"src":"assets/projects/taikoo-shing/03.jpg","thumb":"assets/projects/taikoo-shing/thumbs/03.jpg","w":960,"h":640,"orig":"item_24164.jpg"},{"src":"assets/projects/taikoo-shing/04.jpg","thumb":"assets/projects/taikoo-shing/thumbs/04.jpg","w":806,"h":576,"orig":"item_24162.jpg"},{"src":"assets/projects/taikoo-shing/05.jpg","thumb":"assets/projects/taikoo-shing/thumbs/05.jpg","w":960,"h":640,"orig":"item_24163.jpg"}],"cover":"assets/projects/taikoo-shing/cover.jpg","cover_w":760,"cover_h":570},{"slug":"beverly-hills","name":"比華利山","district":"跑馬地","count":6,"items":[{"src":"assets/projects/beverly-hills/01.jpg","thumb":"assets/projects/beverly-hills/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24368.jpg"},{"src":"assets/projects/beverly-hills/02.jpg","thumb":"assets/projects/beverly-hills/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24373.jpg"},{"src":"assets/projects/beverly-hills/03.jpg","thumb":"assets/projects/beverly-hills/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24375.jpg"},{"src":"assets/projects/beverly-hills/04.jpg","thumb":"assets/projects/beverly-hills/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24370.jpg"},{"src":"assets/projects/beverly-hills/05.jpg","thumb":"assets/projects/beverly-hills/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24374.jpg"},{"src":"assets/projects/beverly-hills/06.jpg","thumb":"assets/projects/beverly-hills/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24367.jpg"}],"cover":"assets/projects/beverly-hills/cover.jpg","cover_w":1000,"cover_h":750},{"slug":"sha-tin","name":"沙田 畢架·金峰","district":"新界東","count":6,"items":[{"src":"assets/projects/sha-tin/01.jpg","thumb":"assets/projects/sha-tin/thumbs/01.jpg","w":750,"h":500,"orig":"item_24320.jpg"},{"src":"assets/projects/sha-tin/02.jpg","thumb":"assets/projects/sha-tin/thumbs/02.jpg","w":750,"h":500,"orig":"item_24315.jpg"},{"src":"assets/projects/sha-tin/03.jpg","thumb":"assets/projects/sha-tin/thumbs/03.jpg","w":750,"h":500,"orig":"item_24322.jpg"},{"src":"assets/projects/sha-tin/04.jpg","thumb":"assets/projects/sha-tin/thumbs/04.jpg","w":750,"h":500,"orig":"item_24314.jpg"},{"src":"assets/projects/sha-tin/05.jpg","thumb":"assets/projects/sha-tin/thumbs/05.jpg","w":750,"h":500,"orig":"item_24321.jpg"},{"src":"assets/projects/sha-tin/06.jpg","thumb":"assets/projects/sha-tin/thumbs/06.jpg","w":750,"h":500,"orig":"item_24316.jpg"}],"cover":"assets/projects/sha-tin/cover.jpg","cover_w":750,"cover_h":562},{"slug":"mid-levels","name":"西半山 嘉兆臺","district":"港島西","count":6,"items":[{"src":"assets/projects/mid-levels/01.jpg","thumb":"assets/projects/mid-levels/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24137.jpg"},{"src":"assets/projects/mid-levels/02.jpg","thumb":"assets/projects/mid-levels/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24135.jpg"},{"src":"assets/projects/mid-levels/03.jpg","thumb":"assets/projects/mid-levels/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24140.jpg"},{"src":"assets/projects/mid-levels/04.jpg","thumb":"assets/projects/mid-levels/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24139.jpg"},{"src":"assets/projects/mid-levels/05.jpg","thumb":"assets/projects/mid-levels/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24136.jpg"},{"src":"assets/projects/mid-levels/06.jpg","thumb":"assets/projects/mid-levels/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24143.jpg"}],"cover":"assets/projects/mid-levels/cover.jpg","cover_w":1000,"cover_h":750}];
+window.CONTACT = {
+  whatsapp: "85212345678",
+  phone: "",
+  email: ""
+};
+
+const PROJECTS = [
+  {"slug":"north-point","name":"北角 港運城","district":"港島東","count":6,"items":[{"src":"assets/projects/north-point/01.jpg","thumb":"assets/projects/north-point/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24392.jpg"},{"src":"assets/projects/north-point/02.jpg","thumb":"assets/projects/north-point/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24391.jpg"},{"src":"assets/projects/north-point/03.jpg","thumb":"assets/projects/north-point/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24369.jpg"},{"src":"assets/projects/north-point/04.jpg","thumb":"assets/projects/north-point/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24384.jpg"},{"src":"assets/projects/north-point/05.jpg","thumb":"assets/projects/north-point/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24386.jpg"},{"src":"assets/projects/north-point/06.jpg","thumb":"assets/projects/north-point/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24390.jpg"}],"cover":"assets/projects/north-point/cover.jpg","cover_w":1000,"cover_h":750},
+  {"slug":"tai-hang","name":"大坑 昍逵閣","district":"港島東","count":6,"items":[{"src":"assets/projects/tai-hang/01.jpg","thumb":"assets/projects/tai-hang/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24148.jpg"},{"src":"assets/projects/tai-hang/02.jpg","thumb":"assets/projects/tai-hang/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24147.jpg"},{"src":"assets/projects/tai-hang/03.jpg","thumb":"assets/projects/tai-hang/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24146.jpg"},{"src":"assets/projects/tai-hang/04.jpg","thumb":"assets/projects/tai-hang/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24152.jpg"},{"src":"assets/projects/tai-hang/05.jpg","thumb":"assets/projects/tai-hang/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24157.jpg"},{"src":"assets/projects/tai-hang/06.jpg","thumb":"assets/projects/tai-hang/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24156.jpg"}],"cover":"assets/projects/tai-hang/cover.jpg","cover_w":1000,"cover_h":750},
+  {"slug":"taikoo-shing","name":"太古城 金山閣","district":"港島東","count":5,"items":[{"src":"assets/projects/taikoo-shing/01.jpg","thumb":"assets/projects/taikoo-shing/thumbs/01.jpg","w":760,"h":461,"orig":"item_24159.jpg"},{"src":"assets/projects/taikoo-shing/02.jpg","thumb":"assets/projects/taikoo-shing/thumbs/02.jpg","w":960,"h":640,"orig":"item_24161.jpg"},{"src":"assets/projects/taikoo-shing/03.jpg","thumb":"assets/projects/taikoo-shing/thumbs/03.jpg","w":960,"h":640,"orig":"item_24164.jpg"},{"src":"assets/projects/taikoo-shing/04.jpg","thumb":"assets/projects/taikoo-shing/thumbs/04.jpg","w":806,"h":576,"orig":"item_24162.jpg"},{"src":"assets/projects/taikoo-shing/05.jpg","thumb":"assets/projects/taikoo-shing/thumbs/05.jpg","w":960,"h":640,"orig":"item_24163.jpg"}],"cover":"assets/projects/taikoo-shing/cover.jpg","cover_w":760,"cover_h":570},
+  {"slug":"beverly-hills","name":"比華利山","district":"跑馬地","count":6,"items":[{"src":"assets/projects/beverly-hills/01.jpg","thumb":"assets/projects/beverly-hills/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24368.jpg"},{"src":"assets/projects/beverly-hills/02.jpg","thumb":"assets/projects/beverly-hills/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24373.jpg"},{"src":"assets/projects/beverly-hills/03.jpg","thumb":"assets/projects/beverly-hills/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24375.jpg"},{"src":"assets/projects/beverly-hills/04.jpg","thumb":"assets/projects/beverly-hills/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24370.jpg"},{"src":"assets/projects/beverly-hills/05.jpg","thumb":"assets/projects/beverly-hills/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24374.jpg"},{"src":"assets/projects/beverly-hills/06.jpg","thumb":"assets/projects/beverly-hills/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24367.jpg"}],"cover":"assets/projects/beverly-hills/cover.jpg","cover_w":1000,"cover_h":750},
+  {"slug":"sha-tin","name":"沙田 畢架·金峰","district":"新界東","count":6,"items":[{"src":"assets/projects/sha-tin/01.jpg","thumb":"assets/projects/sha-tin/thumbs/01.jpg","w":750,"h":500,"orig":"item_24320.jpg"},{"src":"assets/projects/sha-tin/02.jpg","thumb":"assets/projects/sha-tin/thumbs/02.jpg","w":750,"h":500,"orig":"item_24315.jpg"},{"src":"assets/projects/sha-tin/03.jpg","thumb":"assets/projects/sha-tin/thumbs/03.jpg","w":750,"h":500,"orig":"item_24322.jpg"},{"src":"assets/projects/sha-tin/04.jpg","thumb":"assets/projects/sha-tin/thumbs/04.jpg","w":750,"h":500,"orig":"item_24314.jpg"},{"src":"assets/projects/sha-tin/05.jpg","thumb":"assets/projects/sha-tin/thumbs/05.jpg","w":750,"h":500,"orig":"item_24321.jpg"},{"src":"assets/projects/sha-tin/06.jpg","thumb":"assets/projects/sha-tin/thumbs/06.jpg","w":750,"h":500,"orig":"item_24316.jpg"}],"cover":"assets/projects/sha-tin/cover.jpg","cover_w":750,"cover_h":562},
+  {"slug":"mid-levels","name":"西半山 嘉兆臺","district":"港島西","count":6,"items":[{"src":"assets/projects/mid-levels/01.jpg","thumb":"assets/projects/mid-levels/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24137.jpg"},{"src":"assets/projects/mid-levels/02.jpg","thumb":"assets/projects/mid-levels/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24135.jpg"},{"src":"assets/projects/mid-levels/03.jpg","thumb":"assets/projects/mid-levels/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24140.jpg"},{"src":"assets/projects/mid-levels/04.jpg","thumb":"assets/projects/mid-levels/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24139.jpg"},{"src":"assets/projects/mid-levels/05.jpg","thumb":"assets/projects/mid-levels/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24136.jpg"},{"src":"assets/projects/mid-levels/06.jpg","thumb":"assets/projects/mid-levels/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24143.jpg"}],"cover":"assets/projects/mid-levels/cover.jpg","cover_w":1000,"cover_h":750}
+];
 
 const SERVICES = [
   {n:"工作範圍", d:"全屋重做、加房、局部翻新，或只做部分傢俬。", tags:["全屋重做","增加房間","局部工程"], ico:"scope"},
@@ -662,6 +635,22 @@ burger.addEventListener("click", () => {
   burger.setAttribute("aria-expanded", String(!open));
   mnav.classList.toggle("is-open", !open);
 });
+$$("#mnav a").forEach(a => a.addEventListener("click", () => {
+  burger.setAttribute("aria-expanded", "false"); mnav.classList.remove("is-open");
+}));
+
+/* nav active state */
+const navLinks = $$(".nav a");
+const secs = navLinks.map(a => document.querySelector(a.getAttribute("href"))).filter(Boolean);
+const navObs = new IntersectionObserver(es => {
+  es.forEach(e => {
+    if (!e.isIntersecting) return;
+    navLinks.forEach(a => a.removeAttribute("aria-current"));
+    const link = navLinks.find(a => a.getAttribute("href") === "#" + e.target.id);
+    if (link) link.setAttribute("aria-current", "true");
+  });
+}, {rootMargin:"-45% 0px -50% 0px"});
+secs.forEach(s => navObs.observe(s));
 
 /* services */
 $("#svcGrid").innerHTML = SERVICES.map((s, i) => `
@@ -765,102 +754,61 @@ $$(".reveal").forEach(el => io.observe(el));
 $("#yr").textContent = new Date().getFullYear();
 </script>
 
-<!-- 完整報價資料與互動精靈主邏輯 -->
+<!-- 互動報價精靈邏輯 (Inlined wizard.js) -->
 <script>
-window.CONTACT = { whatsapp: "85212345678" };
 window.RENO_DATA = {
-  scopes: [
-    { name: "全屋重做", months: 3 },
-    { name: "只做傢俬", months: 1.5 },
-    { name: "鋁窗更換", months: 1 },
-    { name: "增加一個房間", months: 1 },
-    { name: "廚房翻新", months: 1.5 },
-    { name: "廁所翻新", months: 1.5 }
-  ],
   questions: [
     {
       id: "Q001",
       stage: "報價方式",
-      stage_order: 10,
-      order: 1,
       text: "你想用哪一種方式報價？",
       subtitle: "先選報價方式，系統會按需要顯示不同深度的問題。",
       type: "single_choice",
-      modes: "簡單;精準",
-      scopes: ["ALL"],
       required: true,
       options: [
-        { id: "Q001-O1", order: 1, label: "精準報價", desc: "按尺寸、材料及現場條件逐項估算，適合準備施工的客人。" },
-        { id: "Q001-O2", order: 2, label: "簡單報價", desc: "用基本資料快速取得預算範圍，適合初步比較。" }
+        { id: "Q001-O1", label: "精準報價", desc: "按尺寸、材料及現場條件逐項估算，適合準備施工的客人。" },
+        { id: "Q001-O2", label: "簡單報價", desc: "用基本資料快速取得預算範圍，適合初步比較。" }
       ]
     },
     {
       id: "Q002",
       stage: "基本資料",
-      stage_order: 20,
-      order: 1,
       text: "你的單位屬於哪一類物業？",
       subtitle: "不同物業類型的申請程序、施工限制及報價會有所不同。",
       type: "single_choice",
-      modes: "簡單;精準",
-      scopes: ["ALL"],
       required: true,
       options: [
-        { id: "Q002-O1", order: 1, label: "公屋", desc: "政府興建單位，裝修及改動限制較多。" },
-        { id: "Q002-O2", order: 2, label: "居屋", desc: "資助出售單位，需留意管理處及屋苑規定。" },
-        { id: "Q002-O3", order: 3, label: "私人屋苑", desc: "私人住宅，通常有管理處裝修申請。" },
-        { id: "Q002-O4", order: 4, label: "村屋", desc: "新界村屋，可能涉及結構、僭建或水電限制。" },
-        { id: "Q002-O5", order: 5, label: "唐樓", desc: "舊式大廈，可能無升降機或需行樓梯。" },
-        { id: "Q002-O6", order: 6, label: "商舖／寫字樓", desc: "商業空間，另有消防、牌照及營業時間限制。" }
+        { id: "Q002-O1", label: "公屋", desc: "政府興建單位，裝修及改動限制較多。" },
+        { id: "Q002-O2", label: "居屋", desc: "資助出售單位，需留意管理處及屋苑規定。" },
+        { id: "Q002-O3", label: "私人屋苑", desc: "私人住宅，通常有管理處裝修申請。" },
+        { id: "Q002-O4", label: "村屋", desc: "新界村屋，可能涉及結構、僭建或水電限制。" },
+        { id: "Q002-O5", label: "唐樓", desc: "舊式大廈，可能無升降機或需行樓梯。" },
+        { id: "Q002-O6", label: "商舖／寫字樓", desc: "商業空間，另有消防、牌照及營業時間限制。" }
       ]
     },
     {
       id: "Q003",
       stage: "基本資料",
-      stage_order: 20,
-      order: 2,
       text: "單位實用面積大約多少平方呎？",
       subtitle: "可用建築面積或實用面積；如不確定，選最接近的範圍後由設計師覆核。",
       type: "number",
-      modes: "簡單;精準",
-      scopes: ["ALL"],
       required: true,
-      unit: "平方呎",
-      min: 50,
-      max: 10000,
-      options: []
+      unit: "平方呎"
     },
     {
       id: "Q010",
       stage: "工作範圍",
-      stage_order: 30,
-      order: 1,
       text: "你這次想做哪些工程？",
       subtitle: "可多選；這是提取問題及計算工期的關鍵。",
       type: "multi_choice",
-      modes: "簡單;精準",
-      scopes: ["ALL"],
       required: true,
       options: [
-        { id: "Q010-O1", order: 1, label: "全屋重做", desc: "全屋拆改、水電、泥水、油漆及傢俬。" },
-        { id: "Q010-O2", order: 2, label: "只做傢俬", desc: "只訂造及安裝傢俬，不做大型土木工程。" },
-        { id: "Q010-O3", order: 3, label: "鋁窗更換", desc: "更換全屋或部分鋁窗。" },
-        { id: "Q010-O5", order: 5, label: "廚房翻新", desc: "拆改、水電、防水、磁磚及廚櫃。" },
-        { id: "Q010-O6", order: 6, label: "廁所翻新", desc: "拆改、防水、磁磚及潔具。" }
+        { id: "Q010-O1", label: "全屋重做", desc: "全屋拆改、水電、泥水、油漆及傢俬。" },
+        { id: "Q010-O2", label: "只做傢俬", desc: "只訂造及安裝傢俬，不做大型土木工程。" },
+        { id: "Q010-O3", label: "鋁窗更換", desc: "更換全屋或部分鋁窗。" },
+        { id: "Q010-O5", label: "廚房翻新", desc: "拆改、水電、防水、磁磚及廚櫃。" },
+        { id: "Q010-O6", label: "廁所翻新", desc: "拆改、防水、磁磚及潔具。" }
       ]
-    },
-    {
-      id: "Q011",
-      stage: "工作範圍",
-      stage_order: 30,
-      order: 2,
-      text: "你想哪一天開始工程？",
-      subtitle: "請選擇年月日；系統會按工作範圍自動計算預計完工日期。",
-      type: "date",
-      modes: "簡單;精準",
-      scopes: ["ALL"],
-      required: true,
-      options: []
     }
   ]
 };
@@ -870,7 +818,7 @@ window.RENO_DATA = {
   const DATA = window.RENO_DATA;
   if (!DATA) return;
   const QUESTIONS = DATA.questions;
-  const CONTACT = window.CONTACT || { whatsapp: "", phone: "", email: "" };
+  const CONTACT = window.CONTACT || { whatsapp: "85212345678" };
 
   const $ = (s, r) => (r || document).querySelector(s);
   const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
@@ -903,10 +851,6 @@ window.RENO_DATA = {
     </div>`;
   document.body.appendChild(overlay);
 
-  const printRoot = document.createElement("div");
-  printRoot.id = "qzPrintRoot";
-  document.body.appendChild(printRoot);
-
   const body = $("#qzBody");
   const fill = $("#qzFill");
   const count = $("#qzCount");
@@ -914,20 +858,14 @@ window.RENO_DATA = {
   const btnNext = $("#qzNext");
 
   function setValue(qid, val) {
-    if (val === "" || val === null || val === undefined || (Array.isArray(val) && !val.length)) {
+    if (val === "" || val == null || (Array.isArray(val) && !val.length)) {
       delete state.answers[qid];
     } else {
       state.answers[qid] = val;
     }
   }
 
-  function buildFlow() {
-    const flow = [];
-    for (const q of QUESTIONS) {
-      flow.push(q);
-    }
-    return flow;
-  }
+  function buildFlow() { return QUESTIONS.slice(); }
 
   function answerValue(q) {
     const v = state.answers[q.id];
@@ -947,9 +885,7 @@ window.RENO_DATA = {
   }
   function validate(q) {
     if (!q.required) return true;
-    const v = answerValue(q);
-    if (v == null) return false;
-    return true;
+    return answerValue(q) != null;
   }
 
   function optionCard(q, o) {
@@ -969,9 +905,6 @@ window.RENO_DATA = {
     }
     if (q.type === "number") {
       return `<div class="qz-unit"><input class="qz-field" type="number" inputmode="decimal" id="qzInput" value="${esc(v)}" placeholder="請輸入數字">${q.unit ? `<b>${esc(q.unit)}</b>` : ""}</div>`;
-    }
-    if (q.type === "date") {
-      return `<input class="qz-field" type="date" id="qzInput" value="${esc(v)}">`;
     }
     return `<input class="qz-field" type="text" id="qzInput" value="${esc(v)}" placeholder="請輸入">`;
   }
@@ -1006,7 +939,7 @@ window.RENO_DATA = {
         setValue(q.id, input.value.trim());
         hideError();
       });
-      if (q.type !== "date") input.focus({ preventScroll: true });
+      input.focus({ preventScroll: true });
     }
 
     $$(".qopt", body).forEach(btn => {
@@ -1034,7 +967,7 @@ window.RENO_DATA = {
     btnBack.textContent = state.idx === 0 ? "關閉" : "上一題";
   }
 
-  function showError(q) {
+  function showError() {
     const el = $("#qzErr", body);
     if (el) {
       el.textContent = "請先完成此題。";
@@ -1048,12 +981,13 @@ window.RENO_DATA = {
 
   function next() {
     const q = state.flow[state.idx];
-    if (!validate(q)) { showError(q); return; }
+    if (!validate(q)) { showError(); return; }
     if (state.idx >= state.flow.length - 1) { renderSummary(); return; }
     state.idx++;
     syncFlow(state.flow[state.idx].id);
     renderCurrent();
   }
+
   function back() {
     if (state.summary) { state.summary = false; renderCurrent(); return; }
     if (state.idx <= 0) { closeQz(); return; }
@@ -1071,55 +1005,13 @@ window.RENO_DATA = {
     }
     return rows;
   }
+
   function summaryText() {
     const rows = summaryRows();
     if (!rows.length) return "";
     const lines = ["【裝修需求摘要】", ""];
     rows.forEach(([k, v]) => lines.push(`${k}：${v}`));
     return lines.join("\n");
-  }
-
-  function buildPdfDoc() {
-    const now = new Date();
-    const rows = summaryRows();
-    const rowHtml = rows.map(([k, v]) => `<div class="pdf-row"><div class="pdf-q">${esc(k)}</div><div class="pdf-a">${esc(v)}</div></div>`).join("");
-
-    const doc = document.createElement("div");
-    doc.className = "pdf-doc";
-    doc.innerHTML = `
-      <div class="pdf-top">
-        <div class="pdf-top-right">
-          <div class="pdf-label">QUOTATION BRIEF</div>
-          <div class="pdf-ref">QS-${now.getFullYear()}</div>
-        </div>
-      </div>
-      <div class="pdf-title">裝修需求報價摘要</div>
-      <div class="pdf-sub">祥信裝修工程 CheungShun · 香港住宅裝修</div>
-      <div class="pdf-meta">建立日期：${esc(now.toLocaleDateString())} ｜ 資料來源：網站需求單</div>
-      <div class="pdf-group">
-        <div class="pdf-head"><h3>填寫內容摘要</h3></div>
-        ${rowHtml}
-      </div>
-      <div class="pdf-foot">
-        <div><b>備註：</b>本摘要由客人於網站填寫的資料自動生成，只供初步參考。</div>
-        <div>實際工程範圍、物料、數量及金額，以現場度尺及正式報價單為準。</div>
-      </div>`;
-    return doc;
-  }
-
-  function printSummary(msg) {
-    printRoot.innerHTML = "";
-    const doc = buildPdfDoc();
-    printRoot.appendChild(doc);
-    document.body.classList.add("is-printing");
-    const done = () => {
-      window.removeEventListener("afterprint", done);
-      printRoot.innerHTML = "";
-      document.body.classList.remove("is-printing");
-    };
-    window.addEventListener("afterprint", done);
-    if (msg) msg.textContent = "請在列印視窗選擇「另存為 PDF / 儲存到檔案」。";
-    window.print();
   }
 
   function renderSummary() {
@@ -1131,28 +1023,25 @@ window.RENO_DATA = {
     body.innerHTML = `<div class="qz-card">
       <div class="qz-summary">
         <div class="qz-sum-head">
-          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後可下載或列印 PDF 摘要。</p></div>
+          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後可透過 WhatsApp 傳送。</p></div>
         </div>
         <dl class="qz-sum-rows">${rows.map(([k, v]) => `<div class="qz-sum-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         <div class="qz-sum-actions">
-          <button class="btn btn-brand" id="qzPrint" type="button">列印 / 儲存 PDF</button>
           ${wa ? `<a class="btn btn-primary" id="qzWa" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp 傳送摘要</a>` : ""}
         </div>
-        <p class="qz-sum-msg" id="qzSumMsg" role="status" aria-live="polite"></p>
-        <p class="qz-sum-note">按「列印 / 儲存 PDF」即可儲存檔案。</p>
+        <p class="qz-sum-note">點擊 WhatsApp 按鈕即可將摘要帶入對話中傳送。</p>
       </div>
     </div>`;
     body.scrollTop = 0;
     btnBack.textContent = "上一題";
 
-    $("#qzPrint", body).addEventListener("click", () => {
-      printSummary($("#qzSumMsg", body));
-    });
     if (wa) {
       const a = $("#qzWa", body);
-      a.addEventListener("click", () => {
-        a.href = `https://wa.me/${wa}?text=${encodeURIComponent(summaryText())}`;
-      });
+      if (a) {
+        a.addEventListener("click", () => {
+          a.href = `https://wa.me/${wa}?text=${encodeURIComponent(summaryText())}`;
+        });
+      }
     }
   }
 
