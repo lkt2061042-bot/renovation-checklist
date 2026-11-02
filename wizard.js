@@ -53,6 +53,13 @@
     </div>`;
   document.body.appendChild(overlay);
 
+  const printRoot = document.createElement("div");
+  printRoot.id = "qzPrintRoot";
+  document.body.appendChild(printRoot);
+
+  const IS_IOS = /iPad|iPhone|iPod/.test(navigator.userAgent) ||
+    (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+
   const body = $("#qzBody");
   const fill = $("#qzFill");
   const count = $("#qzCount");
@@ -290,7 +297,7 @@
     if (pdfLibPromise) return pdfLibPromise;
     pdfLibPromise = new Promise((resolve, reject) => {
       const s = document.createElement("script");
-      s.src = "vendor/html2pdf.bundle.min.js";
+      s.src = "vendor/html2pdf.bundle.min.js?v=20261102";
       s.onload = () => resolve();
       s.onerror = () => {
         pdfLibPromise = null;
@@ -382,13 +389,6 @@
         <div>祥信裝修工程 CheungShun · 查詢請把此 PDF 傳送給我們。</div>
       </div>`;
 
-    // The element must stay in normal flow: html2pdf measures the height of its
-    // own container, and a fixed/absolute element contributes no height, which
-    // produced a blank 300x150 canvas (and therefore an empty PDF).
-    const stage = document.createElement("div");
-    stage.className = "pdf-stage";
-    stage.appendChild(doc);
-    document.body.appendChild(stage);
     return doc;
   }
 
@@ -408,6 +408,10 @@
       await loadPdfLib();
       doc = buildPdfDoc();
       if (!doc.querySelector(".pdf-row")) throw new Error("no answers to export");
+      const stage = document.createElement("div");
+      stage.className = "pdf-stage";
+      stage.appendChild(doc);
+      document.body.appendChild(stage);
       await waitImages(doc);
       if (document.fonts && document.fonts.ready) await document.fonts.ready;
       await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
@@ -439,6 +443,39 @@
     }
   }
 
+  let printTimer = null;
+  function clearPrintView() {
+    printRoot.innerHTML = "";
+    document.body.classList.remove("is-printing");
+    if (printTimer) { clearTimeout(printTimer); printTimer = null; }
+  }
+
+  // Browser-native print/Save-as-PDF. This keeps the text selectable and avoids
+  // the canvas limits that make html2canvas return a blank page on iOS.
+  function printSummary(msg) {
+    clearPrintView();
+    const doc = buildPdfDoc();
+    if (!doc.querySelector(".pdf-row")) {
+      if (msg) msg.textContent = "未有可列印的資料。";
+      return;
+    }
+    printRoot.appendChild(doc);
+    document.body.classList.add("is-printing");
+    const done = () => {
+      window.removeEventListener("afterprint", done);
+      clearPrintView();
+    };
+    window.addEventListener("afterprint", done);
+    printTimer = setTimeout(clearPrintView, 300000);
+    if (msg) msg.textContent = "在列印視窗選擇「另存為 PDF / 儲存到檔案」。";
+    try {
+      window.print();
+    } catch (e) {
+      clearPrintView();
+      if (msg) msg.textContent = "瀏覽器未能開啟列印，請用直接下載 PDF。";
+    }
+  }
+
   function renderSummary() {
     state.summary = true;
     fill.style.width = "100%";
@@ -453,19 +490,26 @@
         </div>
         <dl class="qz-sum-rows">${rows.map(([k, v]) => `<div class="qz-sum-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         <div class="qz-sum-actions">
-          <button class="btn btn-brand" id="qzSubmit" type="button">完成並下載 PDF</button>
+          <button class="btn btn-brand" id="qzPrint" type="button">列印 / 儲存 PDF</button>
+          ${IS_IOS ? "" : `<button class="btn btn-ghost" id="qzSubmit" type="button">直接下載 PDF</button>`}
           ${wa ? `<a class="btn btn-primary" id="qzWa" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp 傳送摘要</a>` : ""}
         </div>
         <p class="qz-sum-msg" id="qzSumMsg" role="status" aria-live="polite"></p>
-        <p class="qz-sum-note">PDF 只包含你填寫的資料；實際工程範圍及金額以現場度尺及正式報價單為準。</p>
+        <p class="qz-sum-note">iPhone / iPad：按「列印 / 儲存 PDF」→ 分享 → 儲存到檔案。桌面：列印視窗選「另存為 PDF」。PDF 只包含你填寫的資料，實際工程範圍及金額以現場度尺及正式報價單為準。</p>
       </div>
     </div>`;
     body.scrollTop = 0;
     btnBack.textContent = "上一題";
 
-    $("#qzSubmit", body).addEventListener("click", () => {
-      downloadPdf($("#qzSubmit", body), $("#qzSumMsg", body));
+    $("#qzPrint", body).addEventListener("click", () => {
+      printSummary($("#qzSumMsg", body));
     });
+    const downloadBtn = $("#qzSubmit", body);
+    if (downloadBtn) {
+      downloadBtn.addEventListener("click", () => {
+        downloadPdf(downloadBtn, $("#qzSumMsg", body));
+      });
+    }
     if (wa) {
       const a = $("#qzWa", body);
       a.addEventListener("click", () => {

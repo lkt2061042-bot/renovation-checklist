@@ -114,3 +114,17 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
 .pdf-a{color:#14161a;font-size:11px;font-weight:600}
 .pdf-foot{margin-top:26px;border-top:2px solid #14161a;padding-top:10px;font-size:9px;color:#6b7280;line-height:1.7}
 .pdf-foot b{color:#14161a}
+
+/* ---------- browser print / Save as PDF ---------- */
+#qzPrintRoot{display:none}
+@page{size:A4;margin:12mm 10mm}
+@media print{
+  html,body{background:#fff!important}
+  body.is-printing>*:not(#qzPrintRoot){display:none!important}
+  body.is-printing #qzPrintRoot{display:block!important}
+  body.is-printing .pdf-doc{width:auto;max-width:none;background:#fff;color:#14161a;font-size:10.5pt;line-height:1.5}
+  body.is-printing .pdf-doc *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .pdf-head,.pdf-row,.pdf-fact,.pdf-facts,.pdf-foot{break-inside:avoid;page-break-inside:avoid}
+  .pdf-group h3{break-after:avoid;page-break-after:avoid}
+  .pdf-doc a{color:inherit;text-decoration:none}
+}
