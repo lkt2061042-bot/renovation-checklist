@@ -284,16 +284,131 @@
     return lines.join("\n");
   }
 
-  async function copySummary() {
-    const t = summaryText();
-    try {
-      await navigator.clipboard.writeText(t);
-    } catch (e) {
-      const ta = document.createElement("textarea");
-      ta.value = t; document.body.appendChild(ta); ta.select();
-      document.execCommand("copy"); ta.remove();
+  function loadPdfLib() {
+    if (window.html2pdf) return Promise.resolve();
+    return new Promise((resolve, reject) => {
+      const s = document.createElement("script");
+      s.src = "vendor/html2pdf.bundle.min.js";
+      s.onload = () => resolve();
+      s.onerror = () => reject(new Error("PDF library failed to load"));
+      document.head.appendChild(s);
+    });
+  }
+
+  function fmtDate(value) {
+    if (!value) return "待定";
+    let d;
+    if (value instanceof Date) {
+      d = value;
+    } else {
+      d = new Date(value + "T00:00:00");
     }
-    return t;
+    if (isNaN(d)) return String(value);
+    return `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+  }
+
+  function pdfMeta() {
+    const now = new Date();
+    const pad = n => String(n).padStart(2, "0");
+    const ref = `QS-${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}`;
+    const scopes = state.answers.Q010 || [];
+    const months = scopes.map(name => {
+      const s = (DATA.scopes || []).find(x => x.name === name);
+      const m = s && Number(s.months);
+      return m && !isNaN(m) ? m : null;
+    }).filter(Boolean);
+    const duration = months.length ? Math.max(...months) : null;
+    const start = state.answers.Q011 || "";
+    let completion = "";
+    if (start && duration) {
+      const d = new Date(start + "T00:00:00");
+      if (!isNaN(d)) {
+        d.setMonth(d.getMonth() + duration);
+        completion = `${d.getFullYear()}年${d.getMonth() + 1}月${d.getDate()}日`;
+      }
+    }
+    return { ref, now, scopes, duration, start, completion };
+  }
+
+  function buildPdfDoc() {
+    const meta = pdfMeta();
+    const groups = new Map();
+    for (const q of QUESTIONS) {
+      if (state.answers[q.id] == null) continue;
+      if (["Q001", "Q010", "Q011"].includes(q.id)) continue;
+      if (!groups.has(q.stage)) groups.set(q.stage, []);
+      groups.get(q.stage).push([q.text, answerText(q)]);
+    }
+    const groupHtml = [...groups.entries()].map(([stage, rows]) => `
+      <section class="pdf-group">
+        <h3>${esc(stage)}</h3>
+        ${rows.map(([k, v]) => `<div class="pdf-row"><div class="pdf-q">${esc(k)}</div><div class="pdf-a">${esc(v)}</div></div>`).join("")}
+      </section>`).join("");
+
+    const doc = document.createElement("div");
+    doc.className = "pdf-doc";
+    doc.innerHTML = `
+      <div class="pdf-top">
+        <img class="pdf-logo" src="assets/logo.png" alt="祥信裝修工程 CheungShun">
+        <div class="pdf-top-right">
+          <div class="pdf-label">QUOTATION BRIEF</div>
+          <div class="pdf-ref">${esc(meta.ref)}</div>
+        </div>
+      </div>
+      <div class="pdf-title">裝修需求報價摘要</div>
+      <div class="pdf-sub">祥信裝修工程 CheungShun · 香港住宅裝修</div>
+      <div class="pdf-meta">建立日期：${esc(fmtDate(meta.now))}　｜　報價方式：${esc(state.answers.Q001 || "未選擇")}　｜　資料來源：網站需求單</div>
+      <div class="pdf-facts">
+        <div class="pdf-fact"><span>工程範圍</span><b>${esc(meta.scopes.join("、") || "未選擇")}</b></div>
+        <div class="pdf-fact"><span>開始日期</span><b>${esc(fmtDate(meta.start))}</b></div>
+        <div class="pdf-fact"><span>預計工期</span><b>${meta.duration ? esc(meta.duration + " 個月") : "待定"}</b></div>
+        <div class="pdf-fact"><span>預計完工</span><b>${esc(meta.completion || "待定")}</b></div>
+      </div>
+      ${groupHtml}
+      <div class="pdf-foot">
+        <div><b>備註：</b>本摘要由客人於網站填寫的資料自動生成，只供初步參考。</div>
+        <div>實際工程範圍、物料、數量及金額，以現場度尺及正式報價單為準。</div>
+        <div>祥信裝修工程 CheungShun · 查詢請把此 PDF 傳送給我們。</div>
+      </div>`;
+    document.body.appendChild(doc);
+    return doc;
+  }
+
+  function waitImages(root) {
+    return Promise.all([...root.querySelectorAll("img")].map(img => {
+      if (img.complete) return Promise.resolve();
+      return new Promise(resolve => { img.onload = resolve; img.onerror = resolve; });
+    }));
+  }
+
+  async function downloadPdf(btn, msg) {
+    btn.disabled = true;
+    btn.textContent = "正在生成 PDF…";
+    msg.textContent = "";
+    let doc = null;
+    try {
+      await loadPdfLib();
+      doc = buildPdfDoc();
+      await waitImages(doc);
+      const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+      await window.html2pdf().set({
+        margin: [10, 10, 12, 10],
+        filename: `祥信裝修需求摘要_${dateStr}.pdf`,
+        image: { type: "jpeg", quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", logging: false },
+        jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
+        pagebreak: { mode: ["css", "legacy"] },
+      }).from(doc).save();
+      btn.textContent = "PDF 已下載";
+      msg.textContent = "PDF 已下載，可傳送給我們作初步報價。";
+    } catch (e) {
+      console.error(e);
+      btn.disabled = false;
+      btn.textContent = "完成並下載 PDF";
+      msg.textContent = "PDF 生成失敗，請再試一次。";
+    } finally {
+      if (doc) doc.remove();
+    }
   }
 
   function renderSummary() {
@@ -306,59 +421,22 @@
       <div class="qz-summary">
         <div class="qz-sum-head">
           <span class="qz-sum-ico"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 6L9 17l-5-5"/></svg></span>
-          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後送出，我們會將 PDF 報價摘要電郵給你。</p></div>
+          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後可下載專業 PDF 摘要。</p></div>
         </div>
         <dl class="qz-sum-rows">${rows.map(([k, v]) => `<div class="qz-sum-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
         <div class="qz-sum-actions">
-          <button class="btn btn-brand" id="qzSubmit" type="button">完成並等待報價</button>
+          <button class="btn btn-brand" id="qzSubmit" type="button">完成並下載 PDF</button>
           ${wa ? `<a class="btn btn-primary" id="qzWa" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp 傳送摘要</a>` : ""}
         </div>
         <p class="qz-sum-msg" id="qzSumMsg" role="status" aria-live="polite"></p>
-        <p class="qz-sum-note">送出後由後台生成 PDF 報價摘要並電郵給你；資料只會用於報價聯絡。</p>
+        <p class="qz-sum-note">PDF 只包含你填寫的資料；實際工程範圍及金額以現場度尺及正式報價單為準。</p>
       </div>
     </div>`;
     body.scrollTop = 0;
     btnBack.textContent = "上一題";
 
-    $("#qzSubmit", body).addEventListener("click", async () => {
-      const endpoint = window.QUOTE_ENDPOINT || "";
-      const btn = $("#qzSubmit", body);
-      const msg = $("#qzSumMsg", body);
-
-      if (!endpoint) {
-        await copySummary();
-        msg.textContent = "已複製摘要。後台提交功能尚未連接，請把摘要傳送給我們。";
-        return;
-      }
-
-      const payload = {
-        submittedAt: new Date().toISOString(),
-        page: location.href,
-        summary: summaryText(),
-        answers: QUESTIONS.filter(q => state.answers[q.id] != null).map(q => ({
-          id: q.id,
-          question: q.text,
-          answer: answerText(q),
-        })),
-      };
-
-      btn.disabled = true;
-      btn.textContent = "提交中…";
-      msg.textContent = "";
-      try {
-        const res = await fetch(endpoint, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(payload),
-        });
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        btn.textContent = "已提交";
-        msg.textContent = "已提交，我們會將 PDF 報價摘要電郵給你。";
-      } catch (e) {
-        btn.disabled = false;
-        btn.textContent = "完成並等待報價";
-        msg.textContent = "提交失敗，請稍後再試，或把摘要傳送給我們。";
-      }
+    $("#qzSubmit", body).addEventListener("click", () => {
+      downloadPdf($("#qzSubmit", body), $("#qzSumMsg", body));
     });
     if (wa) {
       const a = $("#qzWa", body);

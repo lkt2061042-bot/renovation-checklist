@@ -85,3 +85,26 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
   .qz{position:static;display:block;background:#fff}
   .qz-top,.qz-foot,.qz-close{display:none}
 }
+
+/* ---------- PDF document ---------- */
+.pdf-doc{position:absolute;left:-10000px;top:0;width:794px;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
+.pdf-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f2b500;padding-bottom:18px}
+.pdf-logo{height:44px;width:auto}
+.pdf-top-right{text-align:right}
+.pdf-label{font-size:9px;letter-spacing:.18em;color:#8a6400;font-weight:700}
+.pdf-ref{font-size:10px;color:#6b7280;margin-top:4px}
+.pdf-title{font-size:28px;font-weight:700;margin:26px 0 4px;letter-spacing:.02em}
+.pdf-sub{font-size:12px;color:#6b7280;margin-bottom:18px}
+.pdf-meta{font-size:10.5px;color:#4b5361;border-top:1px solid #e3e0d7;border-bottom:1px solid #e3e0d7;padding:8px 0;margin-bottom:18px}
+.pdf-facts{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.pdf-fact{background:#f7f6f2;border-left:3px solid #f2b500;padding:10px 12px;break-inside:avoid}
+.pdf-fact span{display:block;font-size:9px;letter-spacing:.08em;color:#8a6400;font-weight:700}
+.pdf-fact b{display:block;font-size:13px;margin-top:3px;color:#14161a;line-height:1.4}
+.pdf-group{margin-bottom:18px}
+.pdf-group h3{font-size:12px;color:#14161a;border-bottom:2px solid #14161a;padding-bottom:4px;margin-bottom:0;letter-spacing:.04em}
+.pdf-row{display:grid;grid-template-columns:34% 66%;gap:10px;padding:7px 0;border-bottom:1px solid #efeee8;break-inside:avoid}
+.pdf-row:nth-child(even){background:#fbfaf7}
+.pdf-q{color:#6b7280;font-size:10.5px}
+.pdf-a{color:#14161a;font-size:11px;font-weight:600}
+.pdf-foot{margin-top:26px;border-top:2px solid #14161a;padding-top:10px;font-size:9px;color:#6b7280;line-height:1.7}
+.pdf-foot b{color:#14161a}
