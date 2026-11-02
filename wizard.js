@@ -395,9 +395,9 @@
         margin: [10, 10, 12, 10],
         filename: `祥信裝修需求摘要_${dateStr}.pdf`,
         image: { type: "jpeg", quality: 0.98 },
-        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", logging: false },
+        html2canvas: { scale: 2, useCORS: true, backgroundColor: "#ffffff", logging: false, windowWidth: 794, scrollX: 0, scrollY: 0 },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["css", "legacy"] },
+        pagebreak: { mode: ["css", "legacy"], avoid: [".pdf-row", ".pdf-fact", ".pdf-group"] },
       }).from(doc).save();
       btn.textContent = "PDF 已下載";
       msg.textContent = "PDF 已下載，可傳送給我們作初步報價。";
