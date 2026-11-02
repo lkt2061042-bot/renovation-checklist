@@ -351,6 +351,7 @@ body.no-scroll{overflow:hidden}
   .reveal{opacity:1;transform:none}
 }
 </style>
+<link rel="stylesheet" href="wizard.css">
 </head>
 <body>
 <a class="skip" href="#main">跳到主要內容</a>
@@ -473,63 +474,19 @@ body.no-scroll{overflow:hidden}
     <div class="wrap">
       <div class="sec-head">
         <span class="kicker">04 — 裝修需求單</span>
-        <h2>三分鐘填好，<br class="mbr">即時生成報價摘要</h2>
-        <p>勾選你需要的項目，右邊會即時整理成一份摘要；可複製或直接傳給我們，回覆時按摘要逐項報價。</p>
+        <h2>逐題回答，<br class="mbr">即時生成報價摘要</h2>
+        <p>一頁一題，跟著進度條完成。按你選擇的報價方式及工程範圍，系統自動出題；可複製摘要直接傳給我們。</p>
       </div>
-      <div class="quote-grid">
-        <form class="form-card" id="quoteForm" novalidate>
-          <div class="fgroup has-sel">
-            <h3><span class="dot"></span>時間安排</h3>
-            <p class="hint">讓我們知道你希望幾時開始、幾時完工。</p>
-            <div class="field-row">
-              <div class="field">
-                <label for="startTime">開始時間</label>
-                <select id="startTime" name="startTime">
-                  <option value="">請選擇</option>
-                  <option>即時開工</option>
-                  <option>2026 年第一季</option>
-                  <option>2026 年第二季</option>
-                  <option>2026 年第三季</option>
-                  <option>2026 年第四季</option>
-                  <option>2027 年或之後</option>
-                </select>
-              </div>
-              <div class="field">
-                <label for="endTime">預計完工</label>
-                <select id="endTime" name="endTime">
-                  <option value="">請選擇</option>
-                  <option>1 個月內</option>
-                  <option>2 個月內</option>
-                  <option>3 個月內</option>
-                  <option>半年內</option>
-                  <option>彈性配合</option>
-                </select>
-              </div>
-            </div>
-          </div>
-          <div id="groups"></div>
-        </form>
-        <aside class="summary" aria-label="報價摘要">
-          <h3>報價摘要 <span class="badge" id="sumCount">0 項</span></h3>
-          <dl class="sum-rows" id="sumRows"></dl>
-          <p class="sum-empty" id="sumEmpty">尚未選擇任何項目。<br>在左邊勾選工程範圍，摘要會即時更新。</p>
-          <div class="sum-actions">
-            <button class="btn btn-brand" type="button" id="btnCopy">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="9" y="9" width="12" height="12" rx="2"/><path d="M5 15V5a2 2 0 012-2h10"/></svg>
-              複製摘要
-            </button>
-            <button class="btn btn-ghost" type="button" id="btnPrint">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 9V3h12v6"/><rect x="4" y="9" width="16" height="7" rx="1"/><path d="M7 16h10v5H7z"/></svg>
-              列印／存成 PDF
-            </button>
-            <a class="btn btn-ghost" id="btnWa" href="#contact" hidden>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 11.5a8.4 8.4 0 01-12.3 7.4L3 21l2.1-5.6A8.4 8.4 0 1121 11.5z"/></svg>
-              WhatsApp 傳送摘要
-            </a>
-          </div>
-          <p class="sum-msg" id="sumMsg" role="status" aria-live="polite"></p>
-          <p class="sum-note">* 摘要只包含你勾選的項目，不會上傳到任何伺服器；所有資料只在你的瀏覽器內處理。</p>
-        </aside>
+      <div class="qz-launch">
+        <div class="qz-launch-card">
+          <span class="qz-launch-ico" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 01-2 2H5a2 2 0 01-2-2V5a2 2 0 012-2h11"/></svg>
+          </span>
+          <h3>開始填寫需求單</h3>
+          <p>約 5–10 分鐘完成，可以中途返回修改。資料只在你的瀏覽器內處理，不會上傳到伺服器。</p>
+          <button class="btn btn-primary" id="qzStart" type="button">開始填寫</button>
+          <p class="qz-launch-note">完成後可複製摘要，貼到 WhatsApp／Instagram 私訊。</p>
+        </div>
       </div>
     </div>
   </section>
@@ -643,8 +600,10 @@ body.no-scroll{overflow:hidden}
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
+<script src="data.js"></script>
+<script src="wizard.js"></script>
 <script>
-const CONTACT = {
+window.CONTACT = {
   whatsapp: "",
   phone: "",
   email: ""
@@ -817,115 +776,7 @@ lb.addEventListener("touchend", e => {
   if (Math.abs(dx) > 46) show(idx + (dx < 0 ? 1 : -1));
 }, {passive:true});
 
-/* form groups */
-const groupsEl = $("#groups");
-groupsEl.innerHTML = GROUPS.map((g, gi) => `
-  <div class="fgroup" data-g="${g.id}">
-    <h3><span class="dot"></span>${g.label}</h3>
-    ${g.hint ? `<p class="hint">${g.hint}</p>` : ""}
-    <div class="opts" id="opts-${g.id}">
-      ${g.items.map(t => `
-        <label class="opt"><input type="checkbox" name="${g.id}" value="${t}"><span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg></span><span>${t}</span></label>`).join("")}
-    </div>
-    <button class="add" type="button" data-add="${g.id}" data-label="${g.label}">
-      <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
-      自定義${g.label}項目
-    </button>
-  </div>`).join("");
-
-groupsEl.addEventListener("click", e => {
-  const add = e.target.closest("[data-add]");
-  if (add) {
-    const gid = add.dataset.add, label = add.dataset.label;
-    const v = prompt(`請輸入自定義${label}項目（例如尺寸、物料或特別要求）：`);
-    if (v && v.trim()) appendOpt(gid, v.trim(), true);
-    return;
-  }
-  const del = e.target.closest(".del");
-  if (del) { del.closest(".opt").remove(); render(); }
-});
-function appendOpt(gid, value, checked) {
-  const box = document.getElementById("opts-" + gid);
-  const label = document.createElement("label");
-  label.className = "opt is-custom";
-  label.innerHTML = `<input type="checkbox" name="${gid}" value="${value.replace(/"/g, "&quot;")}" ${checked ? "checked" : ""}>
-    <span class="box"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12l5 5L20 6"/></svg></span>
-    <span>${value}</span>
-    <button class="del" type="button" aria-label="移除 ${value}"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg></button>`;
-  box.appendChild(label);
-  render();
-}
-
-/* summary */
-const sumRows = $("#sumRows"), sumCount = $("#sumCount"), sumEmpty = $("#sumEmpty"), sumMsg = $("#sumMsg");
-function collect() {
-  const rows = [];
-  const st = $("#startTime").value, et = $("#endTime").value;
-  if (st) rows.push(["開始時間", st]);
-  if (et) rows.push(["預計完工", et]);
-  GROUPS.forEach(g => {
-    const vals = $$(`input[name="${g.id}"]:checked`).map(i => i.value);
-    if (vals.length) rows.push([g.label, vals.join("、")]);
-  });
-  return rows;
-}
-function render() {
-  const rows = collect();
-  sumRows.innerHTML = rows.map(([k, v]) => `<div class="sum-row"><dt>${k}</dt><dd>${v}</dd></div>`).join("");
-  const items = rows.filter(r => r[0] !== "開始時間" && r[0] !== "預計完工")
-    .reduce((n, r) => n + r[1].split("、").length, 0);
-  sumCount.textContent = items + " 項";
-  sumEmpty.style.display = rows.length ? "none" : "";
-  GROUPS.forEach(g => {
-    const el = groupsEl.querySelector(`[data-g="${g.id}"]`);
-    if (el) el.classList.toggle("has-sel", !!groupsEl.querySelector(`input[name="${g.id}"]:checked`));
-  });
-}
-function summaryText() {
-  const rows = collect();
-  if (!rows.length) return "";
-  const lines = ["【裝修需求摘要】", ""];
-  rows.forEach(([k, v]) => lines.push(`${k}：${v}`));
-  lines.push("", "（由祥信裝修工程網站需求單生成）");
-  return lines.join("\n");
-}
-["startTime", "endTime"].forEach(id => $("#" + id).addEventListener("change", render));
-groupsEl.addEventListener("change", render);
-$("#btnCopy").addEventListener("click", async () => {
-  const t = summaryText();
-  if (!t) { sumMsg.textContent = "請先勾選最少一個項目。"; return; }
-  try {
-    await navigator.clipboard.writeText(t);
-    sumMsg.textContent = "已複製摘要，可直接貼到 WhatsApp。";
-  } catch {
-    const ta = document.createElement("textarea");
-    ta.value = t; document.body.appendChild(ta); ta.select();
-    document.execCommand("copy"); ta.remove();
-    sumMsg.textContent = "已複製摘要，可直接貼到 WhatsApp。";
-  }
-  setTimeout(() => sumMsg.textContent = "", 4000);
-});
-const btnWa = $("#btnWa");
-btnWa.addEventListener("click", e => {
-  const t = summaryText();
-  if (CONTACT.whatsapp && t) {
-    e.preventDefault();
-    location.href = `https://wa.me/${CONTACT.whatsapp}?text=${encodeURIComponent(t)}`;
-  }
-});
-render();
-
-/* contact rendering */
-function setContact() {
-  const wa = CONTACT.whatsapp;
-  if (wa) {
-    btnWa.hidden = false;
-    btnWa.href = `https://wa.me/${wa}`;
-  }
-}
-setContact();
-
-$("#btnPrint").addEventListener("click", () => window.print());
+/* quote wizard is handled by wizard.js */
 
 /* reveal */
 const io = new IntersectionObserver(es => {
