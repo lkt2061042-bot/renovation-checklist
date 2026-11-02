@@ -172,6 +172,53 @@ h1,h2,h3{text-wrap:balance}
 .sec--mist .step::before{background:var(--mist)}
 .sec--mist .step::after{box-shadow:0 0 0 4px var(--mist)}
 
+/* quote form */
+.quote-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:36px;align-items:start}
+.form-card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:32px}
+.fgroup{margin-bottom:30px}
+.fgroup:last-child{margin-bottom:0}
+.fgroup>h3{font-size:1rem;display:flex;align-items:center;gap:10px;margin-bottom:6px}
+.fgroup>h3 .dot{width:6px;height:6px;border-radius:50%;background:var(--brand);flex:none}
+.fgroup>p.hint{font-size:.8125rem;color:var(--muted);margin-bottom:14px}
+.field-row{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.field{display:flex;flex-direction:column;gap:7px}
+.field label{font-size:.8125rem;font-weight:600;color:var(--ink-2)}
+.field select,.field input{appearance:none;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;font-size:.9375rem;background:#fff;color:var(--ink);width:100%;transition:border-color .2s,box-shadow .2s}
+.field select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%236b7280' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 14px center;padding-right:36px}
+.field select:focus,.field input:focus{outline:none;border-color:var(--ink-3);box-shadow:0 0 0 3px rgba(20,22,26,.06)}
+.opts{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px}
+.opt{position:relative;display:flex;align-items:center;gap:10px;border:1px solid var(--line);border-radius:var(--radius-sm);padding:11px 13px;cursor:pointer;font-size:.875rem;background:#fff;transition:border-color .18s,background .18s,box-shadow .18s;user-select:none}
+.opt:hover{border-color:#c9c4b6}
+.opt input{position:absolute;opacity:0;width:1px;height:1px}
+.box{width:17px;height:17px;border:1.5px solid #c2bdb0;border-radius:4px;flex:none;display:grid;place-items:center;transition:.18s}
+.box svg{width:10px;height:10px;stroke:#171400;stroke-width:2.6;fill:none;opacity:0;transform:scale(.6);transition:.18s}
+.opt input:checked~.box{background:var(--brand);border-color:var(--brand)}
+.opt input:checked~.box svg{opacity:1;transform:none}
+.opt:has(input:checked){border-color:var(--brand);background:#fffbef}
+.opt input:focus-visible~.box{outline:2px solid var(--brand-ink);outline-offset:2px}
+.opt span{padding-right:4px}
+.opt .del{margin-left:auto;border:0;background:none;padding:2px;cursor:pointer;color:var(--muted);opacity:0;transition:opacity .15s;display:none}
+.opt.is-custom .del{display:block}
+.opt:hover .del{opacity:1}
+.opt .del svg{width:13px;height:13px;stroke:currentColor;stroke-width:2}
+.add{margin-top:10px;display:inline-flex;align-items:center;gap:6px;border:1px dashed #c9c4b6;background:none;color:var(--ink-3);padding:8px 14px;border-radius:999px;font-size:.8125rem;cursor:pointer;transition:.2s}
+.add:hover{border-color:var(--ink-3);color:var(--ink);background:var(--mist)}
+
+/* summary */
+.summary{position:sticky;top:96px;background:var(--ink);color:#fff;border-radius:var(--radius);padding:28px;box-shadow:var(--shadow-md)}
+.summary h3{font-size:1.0625rem;display:flex;align-items:center;justify-content:space-between;gap:10px}
+.summary .badge{font-size:.75rem;background:rgba(255,255,255,.12);padding:3px 10px;border-radius:999px;font-weight:500}
+.sum-rows{margin-top:18px;display:grid;gap:10px;font-size:.8125rem;max-height:260px;overflow:auto;padding-right:4px}
+.sum-row{display:flex;justify-content:space-between;gap:14px;padding-bottom:9px;border-bottom:1px solid rgba(255,255,255,.09)}
+.sum-row:last-child{border-bottom:0;padding-bottom:0}
+.sum-row dt{color:rgba(255,255,255,.55);flex:none}
+.sum-row dd{margin:0;text-align:right;color:rgba(255,255,255,.92)}
+.sum-empty{margin-top:16px;font-size:.8125rem;color:rgba(255,255,255,.5);line-height:1.7}
+.sum-actions{margin-top:22px;display:grid;gap:9px}
+.sum-actions .btn{width:100%;justify-content:center;font-size:.875rem;padding:12px 18px}
+.sum-note{margin-top:14px;font-size:.6875rem;color:rgba(255,255,255,.42);line-height:1.6}
+.sum-msg{margin-top:10px;font-size:.75rem;color:var(--brand-2);min-height:1.2em}
+
 /* faq */
 .faq{display:grid;gap:0;border-top:1px solid var(--line)}
 .faq details{border-bottom:1px solid var(--line);padding:0}
@@ -234,75 +281,12 @@ body.no-scroll{overflow:hidden}
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .reveal.is-in{opacity:1;transform:none}
 
-/* quote wizard styles (inlined from wizard.css) */
-.qz-launch{display:grid;place-items:center;padding:8px 0 4px}
-.qz-launch-card{max-width:560px;width:100%;background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:34px 28px;text-align:center;box-shadow:var(--shadow-sm)}
-.qz-launch-ico{width:56px;height:56px;margin:0 auto 16px;border-radius:16px;background:#fdf3d4;display:grid;place-items:center}
-.qz-launch-ico svg{width:26px;height:26px;stroke:var(--brand-ink);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.qz-launch-card h3{font-size:1.25rem}
-.qz-launch-card p{color:var(--muted);font-size:.9rem;margin:10px auto 20px;max-width:34em}
-.qz-launch-card .btn{width:100%}
-.qz-launch-note{margin-top:14px;font-size:.72rem;color:var(--muted)}
-
-.qz{position:fixed;inset:0;z-index:200;background:var(--mist);display:flex;flex-direction:column}
-.qz[hidden]{display:none}
-.qz-top{flex:none;display:flex;align-items:center;gap:14px;padding:13px 14px;background:#fff;border-bottom:1px solid var(--line)}
-.qz-close{width:38px;height:38px;flex:none;border:1px solid var(--line);background:#fff;border-radius:50%;display:grid;place-items:center;cursor:pointer;color:var(--ink-3);transition:.2s}
-.qz-close:hover{color:var(--ink);border-color:var(--ink-3)}
-.qz-close svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round}
-.qz-bar{flex:1;height:7px;background:var(--mist-2);border-radius:999px;overflow:hidden}
-.qz-fill{display:block;height:100%;width:0;background:var(--brand);border-radius:999px;transition:width .35s var(--ease)}
-.qz-count{flex:none;font-size:.78rem;font-weight:600;color:var(--muted);white-space:nowrap}
-.qz-body{flex:1;overflow-y:auto;padding:22px 16px 30px;-webkit-overflow-scrolling:touch}
-.qz-foot{flex:none;display:flex;gap:10px;padding:12px 16px calc(12px + env(safe-area-inset-bottom));background:#fff;border-top:1px solid var(--line)}
-.qz-foot .btn{flex:1;padding:14px 18px;font-size:.95rem}
-.qz-foot .btn:disabled{opacity:.45;cursor:not-allowed;transform:none}
-
-.qz-card{max-width:640px;margin:0 auto}
-.qz-kicker{display:inline-flex;align-items:center;gap:8px;font-size:.74rem;letter-spacing:.12em;color:var(--brand-ink);font-weight:700}
-.qz-kicker::before{content:"";width:20px;height:2px;background:var(--brand)}
-.qz-card h2{font-size:clamp(1.35rem,5vw,1.85rem);margin:12px 0 8px;letter-spacing:.002em}
-.qz-sub{color:var(--muted);font-size:.9rem;margin:0 0 22px}
-.qz-error{display:none;color:#c62828;font-size:.8rem;margin-top:10px}
-.qz-error.is-on{display:block}
-
-.qz-opts{display:grid;gap:10px}
-.qopt{position:relative;display:flex;gap:12px;align-items:stretch;text-align:left;border:1px solid var(--line);background:#fff;border-radius:var(--radius);padding:10px;cursor:pointer;transition:border-color .18s,background .18s,box-shadow .18s,transform .12s}
-.qopt:hover{border-color:#c9c4b6;transform:translateY(-1px)}
-.qopt.is-on{border-color:var(--brand);background:#fffbef;box-shadow:0 0 0 3px rgba(242,181,0,.12)}
-.qopt-txt{flex:1;display:flex;flex-direction:column;justify-content:center;min-width:0;padding-right:26px}
-.qopt-txt b{font-size:.95rem;line-height:1.35}
-.qopt-txt small{font-size:.77rem;color:var(--muted);margin-top:3px;line-height:1.45;display:block}
-.qopt-check{position:absolute;top:12px;right:12px;width:22px;height:22px;border:1.6px solid var(--line);border-radius:50%;display:grid;place-items:center;color:transparent;transition:.18s;flex:none}
-.qopt.is-on .qopt-check{background:var(--brand);border-color:var(--brand);color:#171400}
-.qopt-check svg{width:12px;height:12px;stroke:currentColor;fill:none;stroke-width:2.6;stroke-linecap:round;stroke-linejoin:round}
-.qopt.multi .qopt-check{border-radius:6px}
-.qz-multi-hint{font-size:.74rem;color:var(--muted);margin:0 0 12px}
-
-.qz-field{width:100%;border:1px solid var(--line);border-radius:var(--radius-sm);padding:14px 15px;font-size:1.05rem;background:#fff;color:var(--ink);transition:border-color .2s,box-shadow .2s}
-.qz-field:focus{outline:none;border-color:var(--ink-3);box-shadow:0 0 0 3px rgba(20,22,26,.06)}
-.qz-unit{display:flex;align-items:center;gap:10px}
-.qz-unit .qz-field{flex:1}
-.qz-unit b{font-size:.9rem;color:var(--muted);white-space:nowrap}
-
-.qz-summary{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow-sm)}
-.qz-sum-head{display:flex;align-items:center;gap:12px;padding-bottom:16px;border-bottom:1px solid var(--line)}
-.qz-sum-head h3{font-size:1.1rem}
-.qz-sum-head p{color:var(--muted);font-size:.8rem;margin-top:2px}
-.qz-sum-rows{margin-top:14px;display:grid;gap:8px;max-height:46vh;overflow:auto;padding-right:4px}
-.qz-sum-row{display:grid;grid-template-columns:1fr;gap:2px;padding:10px 0;border-bottom:1px solid var(--mist-2)}
-.qz-sum-row:last-child{border-bottom:0}
-.qz-sum-row dt{font-size:.72rem;color:var(--muted);letter-spacing:.02em}
-.qz-sum-row dd{margin:0;font-size:.92rem;color:var(--ink);line-height:1.45}
-.qz-sum-actions{margin-top:18px;display:grid;gap:9px}
-.qz-sum-actions .btn{width:100%;justify-content:center;font-size:.9rem}
-.qz-sum-note{margin-top:12px;font-size:.7rem;color:var(--muted);text-align:center;line-height:1.6}
-.qz-sum-msg{margin-top:10px;font-size:.78rem;color:#2e7d32;text-align:center;min-height:1.2em}
-
 /* responsive */
 @media (max-width:1024px){
   .hero-in{grid-template-columns:1fr;gap:40px}
   .hero-media img{aspect-ratio:16/10}
+  .quote-grid{grid-template-columns:1fr}
+  .summary{position:static}
   .gal{grid-template-columns:repeat(2,1fr)}
   .steps{grid-template-columns:repeat(2,1fr);gap:26px 0}
   .step{padding-right:24px}
@@ -330,6 +314,9 @@ body.no-scroll{overflow:hidden}
   .gal{grid-template-columns:1fr}
   .steps{grid-template-columns:1fr}
   .step{padding:22px 0 0}
+  .field-row{grid-template-columns:1fr}
+  .form-card{padding:22px}
+  .summary{padding:22px}
   .sec-head--split{flex-direction:column;align-items:flex-start}
   .lb-stage{grid-template-columns:1fr;padding:0}
   .lb-prev,.lb-next{display:none}
@@ -337,7 +324,34 @@ body.no-scroll{overflow:hidden}
   .cta-in{padding:64px 0}
   .ftr-cols{flex-direction:column;gap:28px}
 }
+@media print{
+  .hdr,.mnav,.hero,.stats,#services,#work,#process,#faq,.cta-band,.ftr,.lb,.filters,
+  .sum-actions,.sum-msg,.sum-note,.add,.sec-head .kicker{display:none!important}
+  body{background:#fff;color:#000;font-size:12pt}
+  .sec{padding:0}
+  .sec-head{margin-bottom:14px}
+  .sec-head h2{font-size:16pt}
+  .quote-grid{display:block}
+  .form-card{border:0;padding:0}
+  .fgroup:not(.has-sel){display:none}
+  .fgroup{margin-bottom:14px;break-inside:avoid}
+  .opt{border:0;padding:2px 0;background:none!important}
+  .opt:has(input:not(:checked)){display:none}
+  .field select{border:0;border-bottom:1px solid #999;border-radius:0;padding:2px 0}
+  .summary{position:static;background:#fff;color:#000;box-shadow:none;padding:18px 0 0;border-top:2px solid #000;margin-top:18px}
+  .summary h3,.summary .badge{color:#000}
+  .summary .badge{border:1px solid #000;background:none}
+  .sum-row{border-bottom:1px solid #ccc}
+  .sum-row dt{color:#444}
+  .sum-row dd{color:#000}
+  .sum-empty{color:#444}
+}
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  .reveal{opacity:1;transform:none}
+}
 </style>
+<link rel="stylesheet" href="wizard.css?v=20261102b">
 </head>
 <body>
 <a class="skip" href="#main">跳到主要內容</a>
@@ -586,22 +600,15 @@ body.no-scroll{overflow:hidden}
   <div class="lb-thumbs" id="lbThumbs"></div>
 </div>
 
-<!-- 內嵌所有資料與互動報價精靈邏輯，確保本機與 GitHub 都能順暢運行 -->
+<script src="data.js"></script>
+<script src="wizard.js?v=20261102b"></script>
 <script>
 window.CONTACT = {
-  whatsapp: "85212345678",
+  whatsapp: "",
   phone: "",
   email: ""
 };
-
-const PROJECTS = [
-  {"slug":"north-point","name":"北角 港運城","district":"港島東","count":6,"items":[{"src":"assets/projects/north-point/01.jpg","thumb":"assets/projects/north-point/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24392.jpg"},{"src":"assets/projects/north-point/02.jpg","thumb":"assets/projects/north-point/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24391.jpg"},{"src":"assets/projects/north-point/03.jpg","thumb":"assets/projects/north-point/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24369.jpg"},{"src":"assets/projects/north-point/04.jpg","thumb":"assets/projects/north-point/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24384.jpg"},{"src":"assets/projects/north-point/05.jpg","thumb":"assets/projects/north-point/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24386.jpg"},{"src":"assets/projects/north-point/06.jpg","thumb":"assets/projects/north-point/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24390.jpg"}],"cover":"assets/projects/north-point/cover.jpg","cover_w":1000,"cover_h":750},
-  {"slug":"tai-hang","name":"大坑 昍逵閣","district":"港島東","count":6,"items":[{"src":"assets/projects/tai-hang/01.jpg","thumb":"assets/projects/tai-hang/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24148.jpg"},{"src":"assets/projects/tai-hang/02.jpg","thumb":"assets/projects/tai-hang/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24147.jpg"},{"src":"assets/projects/tai-hang/03.jpg","thumb":"assets/projects/tai-hang/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24146.jpg"},{"src":"assets/projects/tai-hang/04.jpg","thumb":"assets/projects/tai-hang/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24152.jpg"},{"src":"assets/projects/tai-hang/05.jpg","thumb":"assets/projects/tai-hang/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24157.jpg"},{"src":"assets/projects/tai-hang/06.jpg","thumb":"assets/projects/tai-hang/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24156.jpg"}],"cover":"assets/projects/tai-hang/cover.jpg","cover_w":1000,"cover_h":750},
-  {"slug":"taikoo-shing","name":"太古城 金山閣","district":"港島東","count":5,"items":[{"src":"assets/projects/taikoo-shing/01.jpg","thumb":"assets/projects/taikoo-shing/thumbs/01.jpg","w":760,"h":461,"orig":"item_24159.jpg"},{"src":"assets/projects/taikoo-shing/02.jpg","thumb":"assets/projects/taikoo-shing/thumbs/02.jpg","w":960,"h":640,"orig":"item_24161.jpg"},{"src":"assets/projects/taikoo-shing/03.jpg","thumb":"assets/projects/taikoo-shing/thumbs/03.jpg","w":960,"h":640,"orig":"item_24164.jpg"},{"src":"assets/projects/taikoo-shing/04.jpg","thumb":"assets/projects/taikoo-shing/thumbs/04.jpg","w":806,"h":576,"orig":"item_24162.jpg"},{"src":"assets/projects/taikoo-shing/05.jpg","thumb":"assets/projects/taikoo-shing/thumbs/05.jpg","w":960,"h":640,"orig":"item_24163.jpg"}],"cover":"assets/projects/taikoo-shing/cover.jpg","cover_w":760,"cover_h":570},
-  {"slug":"beverly-hills","name":"比華利山","district":"跑馬地","count":6,"items":[{"src":"assets/projects/beverly-hills/01.jpg","thumb":"assets/projects/beverly-hills/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24368.jpg"},{"src":"assets/projects/beverly-hills/02.jpg","thumb":"assets/projects/beverly-hills/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24373.jpg"},{"src":"assets/projects/beverly-hills/03.jpg","thumb":"assets/projects/beverly-hills/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24375.jpg"},{"src":"assets/projects/beverly-hills/04.jpg","thumb":"assets/projects/beverly-hills/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24370.jpg"},{"src":"assets/projects/beverly-hills/05.jpg","thumb":"assets/projects/beverly-hills/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24374.jpg"},{"src":"assets/projects/beverly-hills/06.jpg","thumb":"assets/projects/beverly-hills/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24367.jpg"}],"cover":"assets/projects/beverly-hills/cover.jpg","cover_w":1000,"cover_h":750},
-  {"slug":"sha-tin","name":"沙田 畢架·金峰","district":"新界東","count":6,"items":[{"src":"assets/projects/sha-tin/01.jpg","thumb":"assets/projects/sha-tin/thumbs/01.jpg","w":750,"h":500,"orig":"item_24320.jpg"},{"src":"assets/projects/sha-tin/02.jpg","thumb":"assets/projects/sha-tin/thumbs/02.jpg","w":750,"h":500,"orig":"item_24315.jpg"},{"src":"assets/projects/sha-tin/03.jpg","thumb":"assets/projects/sha-tin/thumbs/03.jpg","w":750,"h":500,"orig":"item_24322.jpg"},{"src":"assets/projects/sha-tin/04.jpg","thumb":"assets/projects/sha-tin/thumbs/04.jpg","w":750,"h":500,"orig":"item_24314.jpg"},{"src":"assets/projects/sha-tin/05.jpg","thumb":"assets/projects/sha-tin/thumbs/05.jpg","w":750,"h":500,"orig":"item_24321.jpg"},{"src":"assets/projects/sha-tin/06.jpg","thumb":"assets/projects/sha-tin/thumbs/06.jpg","w":750,"h":500,"orig":"item_24316.jpg"}],"cover":"assets/projects/sha-tin/cover.jpg","cover_w":750,"cover_h":562},
-  {"slug":"mid-levels","name":"西半山 嘉兆臺","district":"港島西","count":6,"items":[{"src":"assets/projects/mid-levels/01.jpg","thumb":"assets/projects/mid-levels/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24137.jpg"},{"src":"assets/projects/mid-levels/02.jpg","thumb":"assets/projects/mid-levels/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24135.jpg"},{"src":"assets/projects/mid-levels/03.jpg","thumb":"assets/projects/mid-levels/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24140.jpg"},{"src":"assets/projects/mid-levels/04.jpg","thumb":"assets/projects/mid-levels/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24139.jpg"},{"src":"assets/projects/mid-levels/05.jpg","thumb":"assets/projects/mid-levels/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24136.jpg"},{"src":"assets/projects/mid-levels/06.jpg","thumb":"assets/projects/mid-levels/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24143.jpg"}],"cover":"assets/projects/mid-levels/cover.jpg","cover_w":1000,"cover_h":750}
-];
+const PROJECTS = [{"slug":"north-point","name":"北角 港運城","district":"港島東","count":6,"items":[{"src":"assets/projects/north-point/01.jpg","thumb":"assets/projects/north-point/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24392.jpg"},{"src":"assets/projects/north-point/02.jpg","thumb":"assets/projects/north-point/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24391.jpg"},{"src":"assets/projects/north-point/03.jpg","thumb":"assets/projects/north-point/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24369.jpg"},{"src":"assets/projects/north-point/04.jpg","thumb":"assets/projects/north-point/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24384.jpg"},{"src":"assets/projects/north-point/05.jpg","thumb":"assets/projects/north-point/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24386.jpg"},{"src":"assets/projects/north-point/06.jpg","thumb":"assets/projects/north-point/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24390.jpg"}],"cover":"assets/projects/north-point/cover.jpg","cover_w":1000,"cover_h":750},{"slug":"tai-hang","name":"大坑 昍逵閣","district":"港島東","count":6,"items":[{"src":"assets/projects/tai-hang/01.jpg","thumb":"assets/projects/tai-hang/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24148.jpg"},{"src":"assets/projects/tai-hang/02.jpg","thumb":"assets/projects/tai-hang/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24147.jpg"},{"src":"assets/projects/tai-hang/03.jpg","thumb":"assets/projects/tai-hang/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24146.jpg"},{"src":"assets/projects/tai-hang/04.jpg","thumb":"assets/projects/tai-hang/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24152.jpg"},{"src":"assets/projects/tai-hang/05.jpg","thumb":"assets/projects/tai-hang/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24157.jpg"},{"src":"assets/projects/tai-hang/06.jpg","thumb":"assets/projects/tai-hang/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24156.jpg"}],"cover":"assets/projects/tai-hang/cover.jpg","cover_w":1000,"cover_h":750},{"slug":"taikoo-shing","name":"太古城 金山閣","district":"港島東","count":5,"items":[{"src":"assets/projects/taikoo-shing/01.jpg","thumb":"assets/projects/taikoo-shing/thumbs/01.jpg","w":760,"h":461,"orig":"item_24159.jpg"},{"src":"assets/projects/taikoo-shing/02.jpg","thumb":"assets/projects/taikoo-shing/thumbs/02.jpg","w":960,"h":640,"orig":"item_24161.jpg"},{"src":"assets/projects/taikoo-shing/03.jpg","thumb":"assets/projects/taikoo-shing/thumbs/03.jpg","w":960,"h":640,"orig":"item_24164.jpg"},{"src":"assets/projects/taikoo-shing/04.jpg","thumb":"assets/projects/taikoo-shing/thumbs/04.jpg","w":806,"h":576,"orig":"item_24162.jpg"},{"src":"assets/projects/taikoo-shing/05.jpg","thumb":"assets/projects/taikoo-shing/thumbs/05.jpg","w":960,"h":640,"orig":"item_24163.jpg"}],"cover":"assets/projects/taikoo-shing/cover.jpg","cover_w":760,"cover_h":570},{"slug":"beverly-hills","name":"比華利山","district":"跑馬地","count":6,"items":[{"src":"assets/projects/beverly-hills/01.jpg","thumb":"assets/projects/beverly-hills/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24368.jpg"},{"src":"assets/projects/beverly-hills/02.jpg","thumb":"assets/projects/beverly-hills/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24373.jpg"},{"src":"assets/projects/beverly-hills/03.jpg","thumb":"assets/projects/beverly-hills/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24375.jpg"},{"src":"assets/projects/beverly-hills/04.jpg","thumb":"assets/projects/beverly-hills/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24370.jpg"},{"src":"assets/projects/beverly-hills/05.jpg","thumb":"assets/projects/beverly-hills/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24374.jpg"},{"src":"assets/projects/beverly-hills/06.jpg","thumb":"assets/projects/beverly-hills/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24367.jpg"}],"cover":"assets/projects/beverly-hills/cover.jpg","cover_w":1000,"cover_h":750},{"slug":"sha-tin","name":"沙田 畢架·金峰","district":"新界東","count":6,"items":[{"src":"assets/projects/sha-tin/01.jpg","thumb":"assets/projects/sha-tin/thumbs/01.jpg","w":750,"h":500,"orig":"item_24320.jpg"},{"src":"assets/projects/sha-tin/02.jpg","thumb":"assets/projects/sha-tin/thumbs/02.jpg","w":750,"h":500,"orig":"item_24315.jpg"},{"src":"assets/projects/sha-tin/03.jpg","thumb":"assets/projects/sha-tin/thumbs/03.jpg","w":750,"h":500,"orig":"item_24322.jpg"},{"src":"assets/projects/sha-tin/04.jpg","thumb":"assets/projects/sha-tin/thumbs/04.jpg","w":750,"h":500,"orig":"item_24314.jpg"},{"src":"assets/projects/sha-tin/05.jpg","thumb":"assets/projects/sha-tin/thumbs/05.jpg","w":750,"h":500,"orig":"item_24321.jpg"},{"src":"assets/projects/sha-tin/06.jpg","thumb":"assets/projects/sha-tin/thumbs/06.jpg","w":750,"h":500,"orig":"item_24316.jpg"}],"cover":"assets/projects/sha-tin/cover.jpg","cover_w":750,"cover_h":562},{"slug":"mid-levels","name":"西半山 嘉兆臺","district":"港島西","count":6,"items":[{"src":"assets/projects/mid-levels/01.jpg","thumb":"assets/projects/mid-levels/thumbs/01.jpg","w":1400,"h":933,"orig":"item_24137.jpg"},{"src":"assets/projects/mid-levels/02.jpg","thumb":"assets/projects/mid-levels/thumbs/02.jpg","w":1400,"h":933,"orig":"item_24135.jpg"},{"src":"assets/projects/mid-levels/03.jpg","thumb":"assets/projects/mid-levels/thumbs/03.jpg","w":1400,"h":933,"orig":"item_24140.jpg"},{"src":"assets/projects/mid-levels/04.jpg","thumb":"assets/projects/mid-levels/thumbs/04.jpg","w":1400,"h":933,"orig":"item_24139.jpg"},{"src":"assets/projects/mid-levels/05.jpg","thumb":"assets/projects/mid-levels/thumbs/05.jpg","w":1400,"h":933,"orig":"item_24136.jpg"},{"src":"assets/projects/mid-levels/06.jpg","thumb":"assets/projects/mid-levels/thumbs/06.jpg","w":1400,"h":933,"orig":"item_24143.jpg"}],"cover":"assets/projects/mid-levels/cover.jpg","cover_w":1000,"cover_h":750}];
 
 const SERVICES = [
   {n:"工作範圍", d:"全屋重做、加房、局部翻新，或只做部分傢俬。", tags:["全屋重做","增加房間","局部工程"], ico:"scope"},
@@ -611,6 +618,16 @@ const SERVICES = [
   {n:"傢俬工程", d:"訂造組合櫃、入牆衣櫃、廚櫃及吊櫃，度位後生產。", tags:["組合櫃","入牆衣櫃","廚櫃"], ico:"cabinet"},
   {n:"鋁窗工程", d:"全屋鋁窗更換、窗台防水及執修。", tags:["鋁窗更換","窗台防水"], ico:"window"},
   {n:"雜項工程", d:"清場、泥頭清理、裝修保險及完工清潔。", tags:["清場","泥頭","保險"], ico:"misc"}
+];
+
+const GROUPS = [
+  {id:"scope", label:"工作範圍", hint:"可選多項，例如「全屋重做」＋「鋁窗更換」。", items:["全屋重做","增加一個房間","電制面保留部分新做","只做部分傢俬","鋁窗更換"]},
+  {id:"masonry", label:"泥水工程", hint:"", items:["地磚鋪設","牆磚鋪設","批盪及防水工程"]},
+  {id:"mep", label:"水電工程", hint:"", items:["暗喉及電線重鋪","冷咸淡水喉更換","燈具及開關安裝"]},
+  {id:"painting", label:"油漆工程", hint:"", items:["全屋牆身剷底批灰","乳膠漆塗刷","藝術漆特色牆"]},
+  {id:"furniture", label:"傢俬工程", hint:"", items:["訂造組合櫃","入牆衣櫃","廚櫃及吊櫃"]},
+  {id:"window", label:"鋁窗工程", hint:"", items:["全屋鋁窗更換","窗台防水及執修"]},
+  {id:"misc", label:"雜項工程", hint:"", items:["清場及泥頭清理","裝修保險辦理","完工專業清潔"]}
 ];
 
 const ICONS = {
@@ -744,7 +761,22 @@ addEventListener("keydown", e => {
   if (e.key === "Escape") closeLb();
   if (e.key === "ArrowRight") show(idx + 1);
   if (e.key === "ArrowLeft") show(idx - 1);
+  if (e.key === "Tab") {
+    const f = $$('button, [href], input, select, [tabindex]:not([tabindex="-1"])', lb).filter(el => el.offsetParent !== null);
+    if (!f.length) return;
+    const first = f[0], last = f[f.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  }
 });
+let tx = 0;
+lb.addEventListener("touchstart", e => tx = e.touches[0].clientX, {passive:true});
+lb.addEventListener("touchend", e => {
+  const dx = e.changedTouches[0].clientX - tx;
+  if (Math.abs(dx) > 46) show(idx + (dx < 0 ? 1 : -1));
+}, {passive:true});
+
+/* quote wizard is handled by wizard.js */
 
 /* reveal */
 const io = new IntersectionObserver(es => {
@@ -752,320 +784,6 @@ const io = new IntersectionObserver(es => {
 }, {threshold:.12, rootMargin:"0px 0px -8% 0px"});
 $$(".reveal").forEach(el => io.observe(el));
 $("#yr").textContent = new Date().getFullYear();
-</script>
-
-<!-- 互動報價精靈邏輯 (Inlined wizard.js) -->
-<script>
-window.RENO_DATA = {
-  questions: [
-    {
-      id: "Q001",
-      stage: "報價方式",
-      text: "你想用哪一種方式報價？",
-      subtitle: "先選報價方式，系統會按需要顯示不同深度的問題。",
-      type: "single_choice",
-      required: true,
-      options: [
-        { id: "Q001-O1", label: "精準報價", desc: "按尺寸、材料及現場條件逐項估算，適合準備施工的客人。" },
-        { id: "Q001-O2", label: "簡單報價", desc: "用基本資料快速取得預算範圍，適合初步比較。" }
-      ]
-    },
-    {
-      id: "Q002",
-      stage: "基本資料",
-      text: "你的單位屬於哪一類物業？",
-      subtitle: "不同物業類型的申請程序、施工限制及報價會有所不同。",
-      type: "single_choice",
-      required: true,
-      options: [
-        { id: "Q002-O1", label: "公屋", desc: "政府興建單位，裝修及改動限制較多。" },
-        { id: "Q002-O2", label: "居屋", desc: "資助出售單位，需留意管理處及屋苑規定。" },
-        { id: "Q002-O3", label: "私人屋苑", desc: "私人住宅，通常有管理處裝修申請。" },
-        { id: "Q002-O4", label: "村屋", desc: "新界村屋，可能涉及結構、僭建或水電限制。" },
-        { id: "Q002-O5", label: "唐樓", desc: "舊式大廈，可能無升降機或需行樓梯。" },
-        { id: "Q002-O6", label: "商舖／寫字樓", desc: "商業空間，另有消防、牌照及營業時間限制。" }
-      ]
-    },
-    {
-      id: "Q003",
-      stage: "基本資料",
-      text: "單位實用面積大約多少平方呎？",
-      subtitle: "可用建築面積或實用面積；如不確定，選最接近的範圍後由設計師覆核。",
-      type: "number",
-      required: true,
-      unit: "平方呎"
-    },
-    {
-      id: "Q010",
-      stage: "工作範圍",
-      text: "你這次想做哪些工程？",
-      subtitle: "可多選；這是提取問題及計算工期的關鍵。",
-      type: "multi_choice",
-      required: true,
-      options: [
-        { id: "Q010-O1", label: "全屋重做", desc: "全屋拆改、水電、泥水、油漆及傢俬。" },
-        { id: "Q010-O2", label: "只做傢俬", desc: "只訂造及安裝傢俬，不做大型土木工程。" },
-        { id: "Q010-O3", label: "鋁窗更換", desc: "更換全屋或部分鋁窗。" },
-        { id: "Q010-O5", label: "廚房翻新", desc: "拆改、水電、防水、磁磚及廚櫃。" },
-        { id: "Q010-O6", label: "廁所翻新", desc: "拆改、防水、磁磚及潔具。" }
-      ]
-    }
-  ]
-};
-
-(function () {
-  "use strict";
-  const DATA = window.RENO_DATA;
-  if (!DATA) return;
-  const QUESTIONS = DATA.questions;
-  const CONTACT = window.CONTACT || { whatsapp: "85212345678" };
-
-  const $ = (s, r) => (r || document).querySelector(s);
-  const $$ = (s, r) => [...(r || document).querySelectorAll(s)];
-
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
-  }
-
-  const state = { answers: {}, flow: [], idx: 0, summary: false };
-
-  const overlay = document.createElement("div");
-  overlay.className = "qz";
-  overlay.id = "qz";
-  overlay.setAttribute("role", "dialog");
-  overlay.setAttribute("aria-modal", "true");
-  overlay.setAttribute("aria-label", "裝修需求單");
-  overlay.hidden = true;
-  overlay.innerHTML = `
-    <div class="qz-top">
-      <button class="qz-close" id="qzClose" type="button" aria-label="關閉需求單">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-      </button>
-      <div class="qz-bar"><span class="qz-fill" id="qzFill"></span></div>
-      <div class="qz-count" id="qzCount">準備中</div>
-    </div>
-    <div class="qz-body" id="qzBody"></div>
-    <div class="qz-foot">
-      <button class="btn btn-ghost" id="qzBack" type="button">上一題</button>
-      <button class="btn btn-primary" id="qzNext" type="button">下一題</button>
-    </div>`;
-  document.body.appendChild(overlay);
-
-  const body = $("#qzBody");
-  const fill = $("#qzFill");
-  const count = $("#qzCount");
-  const btnBack = $("#qzBack");
-  const btnNext = $("#qzNext");
-
-  function setValue(qid, val) {
-    if (val === "" || val == null || (Array.isArray(val) && !val.length)) {
-      delete state.answers[qid];
-    } else {
-      state.answers[qid] = val;
-    }
-  }
-
-  function buildFlow() { return QUESTIONS.slice(); }
-
-  function answerValue(q) {
-    const v = state.answers[q.id];
-    if (q.type === "multi_choice") return Array.isArray(v) && v.length ? v : null;
-    return v || null;
-  }
-  function answerText(q) {
-    const v = state.answers[q.id];
-    if (v == null) return "";
-    if (Array.isArray(v)) return v.join("、");
-    if (q.type === "number" && q.unit) return `${v} ${q.unit}`;
-    return String(v);
-  }
-  function isSelected(q, label) {
-    const v = state.answers[q.id];
-    return Array.isArray(v) ? v.includes(label) : v === label;
-  }
-  function validate(q) {
-    if (!q.required) return true;
-    return answerValue(q) != null;
-  }
-
-  function optionCard(q, o) {
-    const on = isSelected(q, o.label);
-    const multi = q.type === "multi_choice";
-    return `<button class="qopt${on ? " is-on" : ""}${multi ? " multi" : ""}" type="button" data-val="${esc(o.label)}">
-      <span class="qopt-txt"><b>${esc(o.label)}</b>${o.desc ? `<small>${esc(o.desc)}</small>` : ""}</span>
-      <span class="qopt-check" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M5 12l5 5L20 7"/></svg></span>
-    </button>`;
-  }
-
-  function inputHTML(q) {
-    const v = state.answers[q.id] || "";
-    if (q.type === "single_choice" || q.type === "multi_choice") {
-      const hint = q.type === "multi_choice" ? `<p class="qz-multi-hint">可選多項，選好後按「下一題」。</p>` : "";
-      return `${hint}<div class="qz-opts">${q.options.map(o => optionCard(q, o)).join("")}</div>`;
-    }
-    if (q.type === "number") {
-      return `<div class="qz-unit"><input class="qz-field" type="number" inputmode="decimal" id="qzInput" value="${esc(v)}" placeholder="請輸入數字">${q.unit ? `<b>${esc(q.unit)}</b>` : ""}</div>`;
-    }
-    return `<input class="qz-field" type="text" id="qzInput" value="${esc(v)}" placeholder="請輸入">`;
-  }
-
-  function syncFlow(keepId) {
-    state.flow = buildFlow();
-    if (keepId) {
-      const i = state.flow.findIndex(x => x.id === keepId);
-      if (i >= 0) state.idx = i;
-    }
-  }
-
-  function renderCurrent() {
-    const q = state.flow[state.idx];
-    if (!q) { renderSummary(); return; }
-    state.summary = false;
-    const pct = state.flow.length ? ((state.idx + 1) / state.flow.length) * 100 : 0;
-    fill.style.width = pct + "%";
-    count.textContent = `第 ${state.idx + 1} / ${state.flow.length} 題`;
-    body.innerHTML = `<div class="qz-card">
-      <span class="qz-kicker">${esc(q.stage)}</span>
-      <h2>${esc(q.text)}</h2>
-      ${q.subtitle ? `<p class="qz-sub">${esc(q.subtitle)}</p>` : ""}
-      ${inputHTML(q)}
-      <p class="qz-error" id="qzErr"></p>
-    </div>`;
-    body.scrollTop = 0;
-
-    const input = $("#qzInput", body);
-    if (input) {
-      input.addEventListener("input", () => {
-        setValue(q.id, input.value.trim());
-        hideError();
-      });
-      input.focus({ preventScroll: true });
-    }
-
-    $$(".qopt", body).forEach(btn => {
-      btn.addEventListener("click", () => {
-        const label = btn.dataset.val;
-        if (q.type === "multi_choice") {
-          const cur = Array.isArray(state.answers[q.id]) ? state.answers[q.id].slice() : [];
-          const on = cur.includes(label);
-          setValue(q.id, on ? cur.filter(x => x !== label) : cur.concat(label));
-          hideError();
-          renderCurrent();
-        } else {
-          setValue(q.id, label);
-          hideError();
-          syncFlow(q.id);
-          renderCurrent();
-          if (state.idx < state.flow.length - 1) {
-            setTimeout(() => { if (!state.summary) next(); }, 200);
-          }
-        }
-      });
-    });
-
-    btnNext.disabled = false;
-    btnBack.textContent = state.idx === 0 ? "關閉" : "上一題";
-  }
-
-  function showError() {
-    const el = $("#qzErr", body);
-    if (el) {
-      el.textContent = "請先完成此題。";
-      el.classList.add("is-on");
-    }
-  }
-  function hideError() {
-    const el = $("#qzErr", body);
-    if (el) el.classList.remove("is-on");
-  }
-
-  function next() {
-    const q = state.flow[state.idx];
-    if (!validate(q)) { showError(); return; }
-    if (state.idx >= state.flow.length - 1) { renderSummary(); return; }
-    state.idx++;
-    syncFlow(state.flow[state.idx].id);
-    renderCurrent();
-  }
-
-  function back() {
-    if (state.summary) { state.summary = false; renderCurrent(); return; }
-    if (state.idx <= 0) { closeQz(); return; }
-    state.idx--;
-    syncFlow(state.flow[state.idx].id);
-    renderCurrent();
-  }
-
-  function summaryRows() {
-    const rows = [];
-    for (const q of QUESTIONS) {
-      if (state.answers[q.id] != null) {
-        rows.push([q.text, answerText(q)]);
-      }
-    }
-    return rows;
-  }
-
-  function summaryText() {
-    const rows = summaryRows();
-    if (!rows.length) return "";
-    const lines = ["【裝修需求摘要】", ""];
-    rows.forEach(([k, v]) => lines.push(`${k}：${v}`));
-    return lines.join("\n");
-  }
-
-  function renderSummary() {
-    state.summary = true;
-    fill.style.width = "100%";
-    count.textContent = "完成";
-    const rows = summaryRows();
-    const wa = CONTACT.whatsapp;
-    body.innerHTML = `<div class="qz-card">
-      <div class="qz-summary">
-        <div class="qz-sum-head">
-          <div><h3>需求摘要已整理好</h3><p>共 ${rows.length} 項，確認後可透過 WhatsApp 傳送。</p></div>
-        </div>
-        <dl class="qz-sum-rows">${rows.map(([k, v]) => `<div class="qz-sum-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>
-        <div class="qz-sum-actions">
-          ${wa ? `<a class="btn btn-primary" id="qzWa" href="https://wa.me/${esc(wa)}" target="_blank" rel="noopener">WhatsApp 傳送摘要</a>` : ""}
-        </div>
-        <p class="qz-sum-note">點擊 WhatsApp 按鈕即可將摘要帶入對話中傳送。</p>
-      </div>
-    </div>`;
-    body.scrollTop = 0;
-    btnBack.textContent = "上一題";
-
-    if (wa) {
-      const a = $("#qzWa", body);
-      if (a) {
-        a.addEventListener("click", () => {
-          a.href = `https://wa.me/${wa}?text=${encodeURIComponent(summaryText())}`;
-        });
-      }
-    }
-  }
-
-  function startQz() {
-    state.answers = {};
-    state.idx = 0;
-    state.summary = false;
-    syncFlow();
-    overlay.hidden = false;
-    document.body.classList.add("no-scroll");
-    renderCurrent();
-  }
-  function closeQz() {
-    overlay.hidden = true;
-    document.body.classList.remove("no-scroll");
-  }
-
-  const launch = $("#qzStart");
-  if (launch) launch.addEventListener("click", startQz);
-  $("#qzClose").addEventListener("click", closeQz);
-  btnNext.addEventListener("click", () => next());
-  btnBack.addEventListener("click", back);
-  overlay.addEventListener("click", e => { if (e.target === overlay) closeQz(); });
-})();
 </script>
 </body>
 </html>
