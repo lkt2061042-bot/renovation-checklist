@@ -284,15 +284,21 @@
     return lines.join("\n");
   }
 
+  let pdfLibPromise = null;
   function loadPdfLib() {
     if (window.html2pdf) return Promise.resolve();
-    return new Promise((resolve, reject) => {
+    if (pdfLibPromise) return pdfLibPromise;
+    pdfLibPromise = new Promise((resolve, reject) => {
       const s = document.createElement("script");
       s.src = "vendor/html2pdf.bundle.min.js";
       s.onload = () => resolve();
-      s.onerror = () => reject(new Error("PDF library failed to load"));
+      s.onerror = () => {
+        pdfLibPromise = null;
+        reject(new Error("PDF library failed to load"));
+      };
       document.head.appendChild(s);
     });
+    return pdfLibPromise;
   }
 
   function fmtDate(value) {
@@ -339,11 +345,16 @@
       if (!groups.has(q.stage)) groups.set(q.stage, []);
       groups.get(q.stage).push([q.text, answerText(q)]);
     }
-    const groupHtml = [...groups.entries()].map(([stage, rows]) => `
+    const groupHtml = [...groups.entries()].map(([stage, rows]) => {
+      const rowHtml = rows.map(([k, v]) => `<div class="pdf-row"><div class="pdf-q">${esc(k)}</div><div class="pdf-a">${esc(v)}</div></div>`);
+      // Keep the section heading with its first row so a heading never sits alone
+      // at the bottom of a page.
+      return `
       <section class="pdf-group">
-        <h3>${esc(stage)}</h3>
-        ${rows.map(([k, v]) => `<div class="pdf-row"><div class="pdf-q">${esc(k)}</div><div class="pdf-a">${esc(v)}</div></div>`).join("")}
-      </section>`).join("");
+        <div class="pdf-head"><h3>${esc(stage)}</h3>${rowHtml[0] || ""}</div>
+        ${rowHtml.slice(1).join("")}
+      </section>`;
+    }).join("");
 
     const doc = document.createElement("div");
     doc.className = "pdf-doc";
@@ -370,7 +381,14 @@
         <div>實際工程範圍、物料、數量及金額，以現場度尺及正式報價單為準。</div>
         <div>祥信裝修工程 CheungShun · 查詢請把此 PDF 傳送給我們。</div>
       </div>`;
-    document.body.appendChild(doc);
+
+    // The element must stay in normal flow: html2pdf measures the height of its
+    // own container, and a fixed/absolute element contributes no height, which
+    // produced a blank 300x150 canvas (and therefore an empty PDF).
+    const stage = document.createElement("div");
+    stage.className = "pdf-stage";
+    stage.appendChild(doc);
+    document.body.appendChild(stage);
     return doc;
   }
 
@@ -389,6 +407,7 @@
     try {
       await loadPdfLib();
       doc = buildPdfDoc();
+      if (!doc.querySelector(".pdf-row")) throw new Error("no answers to export");
       await waitImages(doc);
       if (document.fonts && document.fonts.ready) await document.fonts.ready;
       await new Promise(r => requestAnimationFrame(() => requestAnimationFrame(r)));
@@ -396,25 +415,15 @@
       await window.html2pdf().set({
         margin: [10, 10, 12, 10],
         filename: `祥信裝修需求摘要_${dateStr}.pdf`,
-        image: { type: "jpeg", quality: 0.98 },
+        image: { type: "jpeg", quality: 0.95 },
         html2canvas: {
           scale: 2,
           useCORS: true,
           backgroundColor: "#ffffff",
           logging: false,
-          onclone: (clonedDoc) => {
-            const el = clonedDoc.querySelector(".pdf-doc");
-            if (el) {
-              el.style.position = "static";
-              el.style.left = "0";
-              el.style.top = "0";
-              el.style.zIndex = "auto";
-              el.style.pointerEvents = "auto";
-            }
-          },
         },
         jsPDF: { unit: "mm", format: "a4", orientation: "portrait" },
-        pagebreak: { mode: ["css", "legacy"], avoid: [".pdf-row", ".pdf-fact", ".pdf-group"] },
+        pagebreak: { mode: ["css", "legacy"], avoid: [".pdf-row", ".pdf-fact", ".pdf-head"] },
       }).from(doc).save();
       btn.textContent = "PDF 已下載";
       msg.textContent = "PDF 已下載，可傳送給我們作初步報價。";
@@ -424,7 +433,9 @@
       btn.textContent = "完成並下載 PDF";
       msg.textContent = "PDF 生成失敗，請再試一次。";
     } finally {
-      if (doc) doc.remove();
+      const stage = doc && doc.parentElement;
+      if (stage && stage.classList.contains("pdf-stage")) stage.remove();
+      else if (doc) doc.remove();
     }
   }
 

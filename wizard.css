@@ -87,7 +87,12 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
 }
 
 /* ---------- PDF document ---------- */
-.pdf-doc{position:fixed;left:0;top:0;z-index:1;pointer-events:none;width:794px;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
+/* The document itself must stay in normal flow: html2pdf measures the height
+   of its own container, and a fixed/absolute element adds no height, which
+   produced a blank canvas and an empty PDF. It is parked off-screen by its
+   fixed-position stage, then deep-cloned by html2pdf. */
+.pdf-stage{position:fixed;left:-20000px;top:0;width:718px;height:0;overflow:hidden;pointer-events:none;z-index:-1}
+.pdf-doc{position:static;width:100%;background:#fff;color:#14161a;font-family:"Microsoft JhengHei","PingFang HK","Noto Sans HK",sans-serif;font-size:12px;line-height:1.55;padding:0}
 .pdf-top{display:flex;justify-content:space-between;align-items:flex-start;border-bottom:3px solid #f2b500;padding-bottom:18px}
 .pdf-logo{height:44px;width:auto}
 .pdf-top-right{text-align:right}
@@ -101,8 +106,9 @@ textarea.qz-field{min-height:130px;resize:vertical;line-height:1.6}
 .pdf-fact span{display:block;font-size:9px;letter-spacing:.08em;color:#8a6400;font-weight:700}
 .pdf-fact b{display:block;font-size:13px;margin-top:3px;color:#14161a;line-height:1.4}
 .pdf-group{margin-bottom:18px}
+.pdf-head{break-inside:avoid;page-break-inside:avoid;padding-top:6px}
 .pdf-group h3{font-size:12px;color:#14161a;border-bottom:2px solid #14161a;padding-bottom:4px;margin-bottom:0;letter-spacing:.04em}
-.pdf-row{display:grid;grid-template-columns:34% 66%;gap:10px;padding:7px 0;border-bottom:1px solid #efeee8;break-inside:avoid}
+.pdf-row{display:grid;grid-template-columns:34% 66%;gap:10px;padding:7px 0;border-bottom:1px solid #efeee8;break-inside:avoid;page-break-inside:avoid}
 .pdf-row:nth-child(even){background:#fbfaf7}
 .pdf-q{color:#6b7280;font-size:10.5px}
 .pdf-a{color:#14161a;font-size:11px;font-weight:600}
